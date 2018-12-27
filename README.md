@@ -4,7 +4,7 @@ UML State Machine in C
 This is a lightweight framework for UML state machine implemented in C. This framework supports finite state machine and hierarchical state machine. The framework is independent of CPU, operating systems and it is developed specifically for embedded application in mind.
 
 To read more about finite state machine and hierarchical state machine please go through the following links.
-<https://en.wikipedia.org/wiki/UML_state_machine>
+<https://en.wikipedia.org/wiki/UML_state_machine>  
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
 
@@ -64,11 +64,13 @@ The framework works on **run to completion** principle. Hence, once the event is
 State transition
 ----------------
 The framework supports two types of state transition,
-1. switch_state: 
-  Use this function when framework is configured for finite state machine. You can also use this function in hierarchical state machine if the source state and target state have same parent state. It calls the exit action of source state and then calls the entry action of target state in the state transition.
+1. switch_state:
 
-2. traverse_state: 
-  Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
+   Use this function when framework is configured for finite state machine. You can also use this function in hierarchical state machine if the source state and target state have same parent state. It calls the exit action of source state and then calls the entry action of target state in the state transition.
+
+2. traverse_state:
+
+   Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
 
 
 Examples
