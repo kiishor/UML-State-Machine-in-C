@@ -2,9 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="..\..\src\gmock-global.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\src\gtest\gtest.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="46133" topLine="892" />
+			<Cursor1 position="1876" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="hsm_config.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="353" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="..\..\src\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,9 +17,9 @@
 			<Cursor1 position="53" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="hsm_config.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\src\gmock-global.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="353" topLine="0" />
+			<Cursor1 position="46133" topLine="892" />
 		</Cursor>
 	</File>
 	<File name="..\..\src\catch.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -22,9 +27,19 @@
 			<Cursor1 position="470684" topLine="13881" />
 		</Cursor>
 	</File>
-	<File name="..\..\src\cases\priority_test.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\src\cases\state_transition.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="639" topLine="0" />
+			<Cursor1 position="1438" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="..\..\src\cases\simple_test.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="754" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\src\cases\priority_test.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1274" topLine="33" />
 		</Cursor>
 	</File>
 	<File name="..\..\..\src\hsm.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -35,11 +50,6 @@
 	<File name="..\..\..\src\hsm.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="320" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="..\..\src\gtest\gtest.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1876" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

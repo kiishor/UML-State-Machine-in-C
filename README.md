@@ -1,11 +1,10 @@
-UML-State-Machine-in-C
+UML State Machine in C
 ======================
 
 This is a lightweight framework for UML state machine implemented in C. This framework supports finite state machine and hierarchical state machine. The framework is independent of CPU, operating systems and it is developed specifically for embedded application in mind.
 
 To read more about finite state machine and hierarchical state machine please go through the following links.
 <https://en.wikipedia.org/wiki/UML_state_machine>
-
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
 
@@ -15,14 +14,21 @@ The framework contains three files
 3. hsm_config.h : Compile-time configuration of framework.
 
 
-The framework can be configured to support either finite state machine or hierarchical state machine using a macro in hsm_config.h file.
+The framework can be configured to support either **finite state machine** or **hierarchical state machine** using a macro in hsm_config.h file.
 
 State Machine
 -------------
-The State machine is represented by `state_machine_t` data type. It is an abstract structure that can inherited to create a state machine.
+The State machine is represented by `state_machine_t` data type. It is an abstract structure that can be inherited to create a state machine.
 The `state_machine_t` must be the first member of an inherited state machine.
 
-The `state_machine_t` contains following two members,
+```C
+//! Abstract state machine structure
+struct state_machine_t
+{
+   uint32_t Event;          //!< Pending Event for state machine
+   const state_t* State;    //!< State of state machine.
+};
+```
 
 ### Event
  Event is represented by 32-bit unsigned int. The `Event` field in the `state_machine_t` holds the event value to pass it to the state machine. The `Event` (in `state_machine_t`) equal to zero indicates that state machine is ready to accept new event. Write any non-zero value in the `Event` to pass it to the state machine. The framework clears the Event when state machine processes it successfully. Do not write new event value, when the `Event` field in the `state_machine_t` is not zero.
@@ -58,9 +64,11 @@ The framework works on **run to completion** principle. Hence, once the event is
 State transition
 ----------------
 The framework supports two types of state transition,
-1. switch_state: Use this function when framework is configured for finite state machine. You can also use this function in hierarchical state machine if the source state and target state have same parent state. It calls the exit action of source state and then calls the entry action of target state in the state transition.
+1. switch_state: 
+  Use this function when framework is configured for finite state machine. You can also use this function in hierarchical state machine if the source state and target state have same parent state. It calls the exit action of source state and then calls the entry action of target state in the state transition.
 
-2. traverse_state: Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
+2. traverse_state: 
+  Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
 
 
 Examples
