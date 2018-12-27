@@ -9,7 +9,7 @@
  *  https://github.com/kiishor
 
  *  Distributed under the MIT License, (See accompanying
- *  file LICENSE.txt or copy at https://mit-license.org/)
+ *  file LICENSE or copy at https://mit-license.org/)
  */
 
 /*
@@ -25,22 +25,22 @@
  *  --------------------- DEFINITION ---------------------
  */
 
-#define EXECUTE_HANDLER(handler, triggerd, state_machine)        \
-do{                                                              \
-  if(handler != NULL)                                            \
-  {                                                              \
-    state_machine_result_t result = handler(state_machine);      \
+#define EXECUTE_HANDLER(handler, triggerd, state_machine)       \
+do{                                                             \
+  if(handler != NULL)                                           \
+  {                                                             \
+    state_machine_result_t result = handler(state_machine);     \
     switch(result)                                              \
-    {                                                            \
-    case TRIGGERED_TO_SELF:                                      \
+    {                                                           \
+    case TRIGGERED_TO_SELF:                                     \
       triggerd = true;                                          \
-    case EVENT_HANDLED:                                          \
+    case EVENT_HANDLED:                                         \
       break;                                                    \
                                                                 \
     default:                                                    \
       return result;                                            \
-    }                                                            \
-  }                                                              \
+    }                                                           \
+  }                                                             \
 } while(0)
 
 /*

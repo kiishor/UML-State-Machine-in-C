@@ -9,7 +9,7 @@
  *  https://github.com/kiishor
 
  *  Distributed under the MIT License, (See accompanying
- *  file LICENSE.txt or copy at https://mit-license.org/)
+ *  file LICENSE or copy at https://mit-license.org/)
  */
 
 #include <stdint.h>
