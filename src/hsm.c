@@ -140,7 +140,7 @@ state_machine_result_t dispatch_event(state_machine_t* const pState_Machine[]
  * \return state_machine_result_t                  Result of state traversal
  *
  */
-state_machine_result_t traverse_state_machine(state_machine_t* const pState_Machine,
+state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
                                               const state_t* pTarget_State)
 {
   const state_t *pSource_State = pState_Machine->State;
@@ -213,7 +213,7 @@ state_machine_result_t traverse_state_machine(state_machine_t* const pState_Mach
  * \return extern state_machine_result_t          Result of state traversal
  *
  */
-extern state_machine_result_t switch_finite_state(state_machine_t* const pState_Machine, const state_t* pTarget_State)
+extern state_machine_result_t switch_state(state_machine_t* const pState_Machine, const state_t* pTarget_State)
 {
   const state_t *pSource_State = pState_Machine->State;
   bool triggered_to_self = false;

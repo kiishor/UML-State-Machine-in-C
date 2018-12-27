@@ -182,7 +182,7 @@ SCENARIO("Transition from same level and same parent")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level3_Child1_HSM[1]);
       }
     }
@@ -208,7 +208,7 @@ SCENARIO("Transition from same level and different parent states")
 
         THEN("traverse_state invokes respective entry and exit handlers")
         {
-          REQUIRE((traverse_state_machine(&machine, Level3_Child4_HSM)) == TRIGGERED_TO_SELF);
+          REQUIRE((traverse_state(&machine, Level3_Child4_HSM)) == TRIGGERED_TO_SELF);
           REQUIRE(machine.State == Level3_Child4_HSM);
         }
       }
@@ -227,7 +227,7 @@ SCENARIO("Transition from same level and different parent states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level3_Child1_HSM[1]);
       }
     }
@@ -250,7 +250,7 @@ SCENARIO("Transition from low level to high level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level1_HSM[2])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level1_HSM[2])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level1_HSM[2]);
       }
     }
@@ -265,7 +265,7 @@ SCENARIO("Transition from low level to high level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level2_Child1_HSM[0])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level2_Child1_HSM[0])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level2_Child1_HSM[0]);
       }
     }
@@ -282,7 +282,7 @@ SCENARIO("Transition from low level to high level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level2_Child1_HSM[0])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level2_Child1_HSM[0])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level2_Child1_HSM[0]);
       }
     }
@@ -305,7 +305,7 @@ SCENARIO("Transition from high level to low level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level3_Child1_HSM[1]);
       }
     }
@@ -320,7 +320,7 @@ SCENARIO("Transition from high level to low level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level3_Child1_HSM[1])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level3_Child1_HSM[1]);
       }
     }
@@ -337,7 +337,7 @@ SCENARIO("Transition from high level to low level states")
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
-        REQUIRE((traverse_state_machine(&machine, &Level3_Child4_HSM[0])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine, &Level3_Child4_HSM[0])) == EVENT_HANDLED);
         REQUIRE(machine.State == &Level3_Child4_HSM[0]);
       }
     }

@@ -51,7 +51,7 @@ SCENARIO("Finite state machine transition")
 
     state_machine_t machine1;
     machine1.State = testHSM;
-    WHEN( "State transition using \"switch_finite_state\"" )
+    WHEN( "State transition using \"switch_state\"" )
     {
       InSequence s;
 
@@ -60,12 +60,12 @@ SCENARIO("Finite state machine transition")
 
       THEN("It invokes exit handler of source state and entry handler of target state")
       {
-        REQUIRE((switch_finite_state(&machine1, &testHSM[1])) == EVENT_HANDLED);
+        REQUIRE((switch_state(&machine1, &testHSM[1])) == EVENT_HANDLED);
         REQUIRE(machine1.State == &testHSM[1]);
       }
     }
     #if HIERARCHICAL_STATES
-    WHEN( "State transitions using \"traverse_state_machine\"" )
+    WHEN( "State transitions using \"traverse_state\"" )
     {
       InSequence s;
 
@@ -74,7 +74,7 @@ SCENARIO("Finite state machine transition")
 
       THEN("It invokes exit handler of source state and entry handler of target state")
       {
-        REQUIRE((traverse_state_machine(&machine1, &testHSM[1])) == EVENT_HANDLED);
+        REQUIRE((traverse_state(&machine1, &testHSM[1])) == EVENT_HANDLED);
         REQUIRE(machine1.State == &testHSM[1]);
       }
     }
@@ -89,7 +89,7 @@ SCENARIO("Finite state machine transition")
 
       THEN("traverse_state returns TRIGGERED_TO_SELF status")
       {
-        REQUIRE((switch_finite_state(&machine1, &testHSM[1])) == TRIGGERED_TO_SELF);
+        REQUIRE((switch_state(&machine1, &testHSM[1])) == TRIGGERED_TO_SELF);
         REQUIRE(machine1.State == &testHSM[1]);
       }
     }
@@ -103,7 +103,7 @@ SCENARIO("Finite state machine transition")
 
       THEN("traverse_state returns TRIGGERED_TO_SELF status")
       {
-        REQUIRE((switch_finite_state(&machine1, &testHSM[1])) == TRIGGERED_TO_SELF);
+        REQUIRE((switch_state(&machine1, &testHSM[1])) == TRIGGERED_TO_SELF);
         REQUIRE(machine1.State == &testHSM[1]);
       }
     }
@@ -116,7 +116,7 @@ SCENARIO("Finite state machine transition")
 
       THEN("traverse_state terminates the state transition")
       {
-        REQUIRE((switch_finite_state(&machine1, &testHSM[1])) == EVENT_UN_HANDLED);
+        REQUIRE((switch_state(&machine1, &testHSM[1])) == EVENT_UN_HANDLED);
       }
     }
     WHEN("Exit handler returns error")
@@ -129,7 +129,7 @@ SCENARIO("Finite state machine transition")
 
       THEN("traverse_state returns TRIGGERED_TO_SELF status")
       {
-        REQUIRE((switch_finite_state(&machine1, &testHSM[1])) == EVENT_UN_HANDLED);
+        REQUIRE((switch_state(&machine1, &testHSM[1])) == EVENT_UN_HANDLED);
       }
     }
   }

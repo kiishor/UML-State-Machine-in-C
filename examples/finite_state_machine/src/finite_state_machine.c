@@ -100,7 +100,7 @@ static state_machine_result_t idle_handler(state_machine_t* const pState)
   {
   case START:
   case START_CAPS:
-    return switch_finite_state(pState, &Process_States[ACTIVE_STATE]);
+    return switch_state(pState, &Process_States[ACTIVE_STATE]);
 
   default:
     return EVENT_UN_HANDLED;
@@ -134,15 +134,15 @@ static state_machine_result_t active_handler(state_machine_t* const pState)
   {
   case QUIT:
   case QUIT_CAPS:
-    return switch_finite_state(pState, &Process_States[IDLE_STATE]);
+    return switch_state(pState, &Process_States[IDLE_STATE]);
 
   case PAUSE:
   case PAUSE_CAPS:
-    return switch_finite_state(pState, &Process_States[PAUSE_STATE]);
+    return switch_state(pState, &Process_States[PAUSE_STATE]);
 
   case TIMEOUT:
   case TIMEOUT_CAPS:
-    return switch_finite_state(pState, &Process_States[IDLE_STATE]);
+    return switch_state(pState, &Process_States[IDLE_STATE]);
 
   case GET_TIME:
   case GET_TIME_CAPS:
@@ -184,16 +184,16 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
   case START:
   case START_CAPS:
     start_process(pProcess);
-    return switch_finite_state(pState, &Process_States[ACTIVE_STATE]);
+    return switch_state(pState, &Process_States[ACTIVE_STATE]);
 
   case QUIT:
   case QUIT_CAPS:
-    return switch_finite_state(pState, &Process_States[IDLE_STATE]);
+    return switch_state(pState, &Process_States[IDLE_STATE]);
 
   case RESUME:
   case RESUME_CAPS:
     resume_process(pProcess);
-    return switch_finite_state(pState, &Process_States[ACTIVE_STATE]);
+    return switch_state(pState, &Process_States[ACTIVE_STATE]);
 
   case GET_TIME:
   case GET_TIME_CAPS:

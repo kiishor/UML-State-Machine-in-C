@@ -112,11 +112,11 @@ extern state_machine_result_t dispatch_event(state_machine_t* const pState_Machi
                                             );
 
 #if HIERARCHICAL_STATES
-extern state_machine_result_t traverse_state_machine(state_machine_t* const pState_Machine,
+extern state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
                                                        const state_t* pTarget_State);
 #endif // HIERARCHICAL_STATES
 
-extern state_machine_result_t switch_finite_state(state_machine_t* const pState_Machine,
+extern state_machine_result_t switch_state(state_machine_t* const pState_Machine,
                                                     const state_t* pTarget_State);
 
 #ifdef __cplusplus
