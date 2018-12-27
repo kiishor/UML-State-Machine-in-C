@@ -1,0 +1,50 @@
+                                   +--------------+
+                                   |              |
+                                   |     root     |
+                                   |              |
+                                   +-+----+-----+-+
+                                     |    |     |
+                                     |    |     +-------------------------+
+                                     |    |                               |
+                     +---------------+    +------------+                  |
+                     |                                 |                  |
+              +------+------+                   +------+------+    +------+------+
+              |             |                   |             |    |             |
+              |  L1_Child1  |                   |  L1_Child2  |    |  L1_Child3  |
+              |             |                   |             |    |             |
+              +----+-+------+                   +---+----+----+    +-------------+
+                   | |                              |    |
+          +--------+ +-------+                   +--+    +--------+
+          |                  |                   |                |
+     +----+--------+  +------+------+     +------+------+  +------+------+
+     |             |  |             |     |             |  |             |
+     |  L2_Child1  |  |  L2_Child2  |     |  L2_Child3  |  |  L2_Child4  |
+     |             |  |             |     |             |  |             |
+     +-------------+  +---+---+-----+     +------+------+  +------+------+
+                          |   |                  |                |
+                          |   |                  |                |
+                   +------+   +---+              |                |
+                   |              |              |                |
+             +-----+-----+  +-----+-----+  +-----+-----+    +-----+-----+
+             | L3_Child1 |  | L3_Child2 |  | L3_Child3 |    | L3_Child4 |
+             +-----------+  +-----------+  +-----------+    +-----------+
+
+
+
+Test scenarios
+1. Same level same parent
+	a. L3_Child1 to L3_Child2
+
+2. Same level different parent
+	a. L3_Child3 to L3_Child4
+	b. L3_Child4 to L3_Child2
+
+3. Low level to high level traversing
+	a. L3_Child3 to L1_Child3
+	b. L3_Child1 to L2_Child1
+	c. L3_Child4 to L2_Child1
+
+4. High level to low level traversing
+	a. L1_Child3 to L3_Child2
+	b. L2_Child1 to L3_Child2
+	c. L2_Child1 to L3_Child4
