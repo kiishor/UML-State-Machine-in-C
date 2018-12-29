@@ -18,6 +18,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "hsm.h"
 
@@ -131,13 +132,40 @@ state_machine_result_t dispatch_event(state_machine_t* const pState_Machine[]
   return EVENT_HANDLED;
 }
 
+/** \brief Switch to target states without traversing to hierarchical levels.
+ *
+ * \param pState_Machine state_machine_t* const   pointer to state machine
+ * \param pTarget_State const state_t* const      Target state to traverse
+ * \return extern state_machine_result_t          Result of state traversal
+ *
+ */
+extern state_machine_result_t switch_state(state_machine_t* const pState_Machine,
+                                           const state_t* const pTarget_State)
+{
+  const state_t* const pSource_State = pState_Machine->State;
+  bool triggered_to_self = false;
+  pState_Machine->State = pTarget_State;    // Save the target node
+
+  // Call Exit function before leaving the Source state.
+    EXECUTE_HANDLER(pSource_State->Exit, triggered_to_self, pState_Machine);
+  // Call entry function before entering the target state.
+    EXECUTE_HANDLER(pTarget_State->Entry, triggered_to_self, pState_Machine);
+
+  if(triggered_to_self == true)
+  {
+    return TRIGGERED_TO_SELF;
+  }
+
+  return EVENT_HANDLED;
+}
+
 #if HIERARCHICAL_STATES
 /** \brief Traverse to target state. It calls exit functions before leaving
       the source state & calls entry function before entering the target state.
  *
  * \param pState_Machine state_machine_t* const   pointer to state machine
  * \param pTarget_State const state_t*            Target state to traverse
- * \return state_machine_result_t                  Result of state traversal
+ * \return state_machine_result_t                 Result of state traversal
  *
  */
 state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
@@ -150,7 +178,8 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
   const state_t *pTarget_Path[pTarget_State->Level];  // Array to store the target node path
   uint32_t index = 0;
 
-  // make the source state & target state hierarchy level at same position.
+  // make the source state & target state at the same hierarchy level.
+
   // Is source hierarchy level is less than target hierarchy level?
   if(pSource_State->Level > pTarget_State->Level)
   {
@@ -174,8 +203,8 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
     }
   }
 
-// Now Source & Target are in same level of hierarchy.
-  // Traverse the source & target state to upward, till their parent node matches.
+  // Now Source & Target are at same hierarchy level.
+  // Traverse the source & target state to upward, till we find their common parent.
   while(pSource_State->Parent != pTarget_State->Parent)
   {
     EXECUTE_HANDLER(pSource_State->Exit, triggered_to_self, pState_Machine);
@@ -184,7 +213,6 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
     pTarget_Path[index++] = pTarget_State;  // Store the target node path.
     pTarget_State = pTarget_State->Parent;    // Move the target state to upward state.
   }
-
 
   // Call Exit function before leaving the Source state.
     EXECUTE_HANDLER(pSource_State->Exit, triggered_to_self, pState_Machine);
@@ -206,32 +234,3 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
 }
 #endif // HIERARCHICAL_STATES
 
-/** \brief Switch to target states without traversing to hierarchical levels.
- *
- * \param pState_Machine state_machine_t* const    pointer to state machine
- * \param pTarget_State const state_t*            Target state to traverse
- * \return extern state_machine_result_t          Result of state traversal
- *
- */
-extern state_machine_result_t switch_state(state_machine_t* const pState_Machine, const state_t* pTarget_State)
-{
-  const state_t *pSource_State = pState_Machine->State;
-  bool triggered_to_self = false;
-  pState_Machine->State = pTarget_State;    // Save the target node
-
-  // Call Exit function before leaving the Source state.
-    EXECUTE_HANDLER(pSource_State->Exit, triggered_to_self, pState_Machine);
-  // Call entry function before entering the target state.
-    EXECUTE_HANDLER(pTarget_State->Entry, triggered_to_self, pState_Machine);
-
-  if(triggered_to_self == true)
-  {
-    return TRIGGERED_TO_SELF;
-  }
-
-  return EVENT_HANDLED;
-}
-
-/*
- *  --------------------- End Of File ---------------------
- */

@@ -18,11 +18,13 @@
 // configuration file for hierarchical state machine.
 
 // Enable the hierarchical state machine
-// 0 : Finite state machine
-// 1 : Hierarchical state machine
+// 0 : disable hierarchical state machine. Only Finite state machine is supported.
+// 1 : enable Hierarchical state machine. Both finite and hierarchical state machine is supported.
 #define  HIERARCHICAL_STATES      0
 
-
-#define STATE_MACHINE_LOGGER     1        //!< Disable the logging of state machine
+// Enable the state machine logging
+// 0: disable the state machine logger
+// 1: enable the state machine logger
+#define STATE_MACHINE_LOGGER     1
 
 #endif // HSM_CONFIG_H

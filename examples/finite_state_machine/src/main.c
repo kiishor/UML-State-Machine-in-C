@@ -18,7 +18,6 @@
 #include "hsm.h"
 #include "finite_state_machine.h"
 
-
 process_t SampleProcess;
 
 state_machine_t * const State_Machines[] = {(state_machine_t *)&SampleProcess};
@@ -33,12 +32,12 @@ void result_logger(uint32_t state, state_machine_result_t result)
 {
   printf("Result: %d, New State: %d\n", result, state);
 }
+
 int main(void)
 {
   init_process(&SampleProcess, 10);
   while(1)
   {
-
     // Get event from console
     SampleProcess.Event  = getchar();
 
@@ -47,7 +46,6 @@ int main(void)
     {
       continue;
     }
-
 
     if(dispatch_event(State_Machines, 1, event_logger, result_logger) == EVENT_UN_HANDLED)
     {

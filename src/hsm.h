@@ -41,9 +41,9 @@
 typedef enum
 {
   EVENT_HANDLED,      //!< Event handled successfully.
+  EVENT_UN_HANDLED,    //!< Event could not be handled.
   //!< Handler handled the Event successfully, and posted new event to itself.
   TRIGGERED_TO_SELF,
-  EVENT_UN_HANDLED,    //!< Event could not be handled.
 }state_machine_result_t;
 
 /*
@@ -122,10 +122,5 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
 #ifdef __cplusplus
 }
 #endif // __cplusplus
-
-/*
- *  --------------------- End Of File ---------------------
- */
-
 
 #endif // HSM_H
