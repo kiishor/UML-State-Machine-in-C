@@ -4,8 +4,8 @@ UML State Machine in C
 This is a lightweight framework for UML state machine implemented in C. It supports both finite and hierarchical state machine. The framework is independent of CPU, operating systems and it is developed specifically for embedded application in mind.
 
 The framework is very minimalistic. It has only three API's (one for event dispatching, two for state transition), two structures and one enumeration.
-It uses only **424** bytes of code memory when configured for hierarchical state machine and **116** bytes of code memory when configured for finite state machine. It doesn't use any data memory for the framework itself.
-> Compiled in IAR ARM 8.30 compiler in release mode.
+It uses only [1]**116** bytes of code memory when configured for finite state machine and [1]**424** bytes of code memory when configured for hierarchical state machine. It doesn't use any data memory for the framework itself.
+> [1]Compiled in IAR ARM 8.30 compiler in release mode.
 
 The framework contains three files
 1. hsm.c : Implementation of framework
@@ -13,7 +13,7 @@ The framework contains three files
 3. hsm_config.h : Compile-time configuration of framework.
 
 To read more about finite state machine and hierarchical state machine please go through the following links.
-<https://en.wikipedia.org/wiki/UML_state_machine>
+<https://en.wikipedia.org/wiki/UML_state_machine>  
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
 
@@ -71,7 +71,7 @@ typedef struct finite_state_t{
 - Entry: pointer to function execute entry action of state
 - Exit: pointer to function to execute exit action of state
 
->The Handler must be initialized.
+>The Handler must be initialized.  
 >The Entry and Exit actions are optional and can be initialized to NULL if not required.
 
 If framework is configured to support hierarchical state machine. It contains additional three members to represent the hierarchical relation between the states.
@@ -148,14 +148,17 @@ State transition
 The framework supports two types of state transition,
 1. switch_state:
 
-```C state_machine_result_t switch_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
+```C 
+state_machine_result_t switch_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
+```
 
    Use this function when framework is configured for finite state machine. You can also use this function in hierarchical state machine if the source and target states have common parent state. It calls the exit action of source state and then calls the entry action of target state in the state transition.
 
 2. traverse_state:
 
-```C state_machine_result_t traverse_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
-
+```C 
+state_machine_result_t traverse_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
+```
    Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
 
 Configuration
@@ -189,24 +192,27 @@ State machine logging
 The framework supports the logging mechanism for debugging purpose using two callback functions.
 User need to implement logger functions and pass it to `dispatch_event`.
 
-```C typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
-```C typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
+```C 
+typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
+typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
+```
+### state_machine_event_logger 
+This function is called before dispatching the event to state machine. The framework passes 3 arguments to this callback function.
 
-- state_machine_event_logger: This function is called before dispatching the event to state machine.
-The framework passes 3 arguments to this callback function.
-  1. state_machine: index of state machine in the array
-  2. state: unique id of current state in the state machine.
-  3. event: event to be dispatched to the state machine.
+- state_machine: index of state machine in the array
+- state: unique id of current state in the state machine.
+- event: event to be dispatched to the state machine.
 
-- state_machine_result_logger: This function is called after dispatching the event to state machine.
-The framework passes 2 arguments to this callback function.
-  1. state: unique id of the current state after handling of the event.
-  2. result: Result of event handled by state machine.
+### state_machine_result_logger
+This function is called after dispatching the event to state machine. The framework passes 2 arguments to this callback function.
+
+- state: unique id of the current state after handling of the event.
+- result: Result of event handled by state machine.
 
 user can use this logging mechanism to also log the time consumed to handle the event by state machine.
 Start timer on `state_machine_event_logger` and stop on `state_machine_result_logger`.
 
-Examples
+Demo
 --------
-finite state machine
+simple state machine
 
