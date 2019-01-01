@@ -23,7 +23,6 @@
  *  --------------------- DEFINITION ---------------------
  */
 
-
 #ifndef HIERARCHICAL_STATES
 //! Default configuration is hierarchical state machine
 #define  HIERARCHICAL_STATES    1
@@ -75,13 +74,7 @@ typedef struct finite_state_t{
 //! Hierarchical state structure
 typedef struct hierarchical_state_t
 {
-  state_handler Handler;      //!< State handler function
-  state_handler Entry;        //!< Entry action for state
-  state_handler Exit;          //!< Exit action for state.
-
-#if STATE_MACHINE_LOGGER
-  uint32_t Id;              //!< unique identifier of state withing the single state machine
-#endif
+  finite_state_t;
 
   const state_t* const Parent;    //!< Parent state of the current state.
   const state_t* const Node;       //!< Child states of the current state.

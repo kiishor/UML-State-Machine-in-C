@@ -50,7 +50,7 @@
 	<stdio.h>
 	"hsm.h"
 
-1546095623 d:\bala\project\uml-state-machine-in-c\src\hsm.h
+1546152492 d:\bala\project\uml-state-machine-in-c\src\hsm.h
 	"hsm_config.h"
 
 1546096821 d:\bala\project\uml-state-machine-in-c\examples\finite_state_machine\build\hsm_config.h
@@ -64,6 +64,22 @@
 1545937726 d:\bala\project\uml-state-machine-in-c\examples\finite_state_machine\src\finite_state_machine.h
 
 1546094888 source:d:\bala\project\uml-state-machine-in-c\examples\finite_state_machine\src\main.c
+	<stdint.h>
+	<stdio.h>
+	"hsm.h"
+	"finite_state_machine.h"
+
+1546096821 d:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\build\hsm_config.h
+
+1545937726 source:d:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\finite_state_machine.c
+	<stdint.h>
+	<stdio.h>
+	"hsm.h"
+	"finite_state_machine.h"
+
+1545937726 d:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\finite_state_machine.h
+
+1546094888 source:d:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\main.c
 	<stdint.h>
 	<stdio.h>
 	"hsm.h"
