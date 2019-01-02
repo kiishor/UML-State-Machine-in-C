@@ -4,7 +4,7 @@ UML State Machine in C
 This is a lightweight framework for UML state machine implemented in C. It supports both finite and hierarchical state machine. The framework is independent of CPU, operating systems and it is developed specifically for embedded application in mind.
 
 The framework is very minimalistic. It has only three API's (one for event dispatching, two for state transition), two structures and one enumeration.
-It uses only [1]**116** bytes of code memory when configured for finite state machine and [1]**424** bytes of code memory when configured for hierarchical state machine. It doesn't use any data memory for the framework itself.
+It uses only **116** bytes[1] of code memory when configured for finite state machine and **424** bytes[1] of code memory when configured for hierarchical state machine. It doesn't use any data memory for the framework itself.
 > [1]Compiled in IAR ARM 8.30 compiler in release mode.
 
 The framework contains three files
