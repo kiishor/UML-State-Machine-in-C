@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <pthread.h>
 
 #include "hsm.h"
 #include "finite_state_machine.h"
