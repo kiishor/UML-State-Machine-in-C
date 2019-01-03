@@ -5,7 +5,7 @@
  * \author  Nandkishor Biradar
  * \date    14 December 2018
 
- *  Copyright (c) 2018 Nandkishor Biradar
+ *  Copyright (c) 2018-2019 Nandkishor Biradar
  *  https://github.com/kiishor
 
  *  Distributed under the MIT License, (See accompanying
@@ -16,37 +16,18 @@
  *  --------------------- ENUMERATION ---------------------
  */
 
+//! List of process events
 typedef enum
 {
-  IDLE_STATE,
-  ACTIVE_STATE,
-  PAUSE_STATE
-}process_state_t;
-
-typedef enum
-{
-  START = 's',
-  START_CAPS = 'S',
-
-  QUIT = 'q',
-  QUIT_CAPS = 'Q',
-
-  PAUSE = 'p',
-  PAUSE_CAPS = 'P',
-
-  RESUME = 'r',
-  RESUME_CAPS = 'R',
-
-  TIMEOUT = 't',
-  TIMEOUT_CAPS = 'T',
-
-  GET_TIME = 'g',
-  GET_TIME_CAPS = 'G',
-
+  START = 1,
+  STOP,
+  PAUSE,
+  RESUME,
+  TIMEOUT,
 }process_event_t;
 
 /*
- *  --------------------- ENUMERATION ---------------------
+ *  --------------------- STRUCTURE ---------------------
  */
 
 typedef struct
@@ -61,4 +42,65 @@ typedef struct
  *  --------------------- External function prototype ---------------------
  */
 
-void init_process(process_t * const pProcess, uint32_t processTime);
+extern void init_process(process_t* const pProcess, uint32_t processTime);
+
+static inline void start_process(process_t* const pProcess)
+{
+  pProcess->Event = START;
+}
+
+static inline void stop_process(process_t* const pProcess)
+{
+  pProcess->Event = STOP;
+}
+
+static inline void pause_process(process_t* const pProcess)
+{
+  pProcess->Event = PAUSE;
+}
+
+static inline void resume_process(process_t* const pProcess)
+{
+  pProcess->Event = RESUME;
+}
+
+static inline void on_process_timedout(process_t* const pProcess)
+{
+  pProcess->Event = TIMEOUT;
+}
+
+static inline void get_process_remaining_time(process_t * const pProcess)
+{
+  printf("Remaining time: %d seconds\n", pProcess->Timer);
+}
+
+static inline void parse_cli(process_t* const pProcess, char input)
+{
+  switch(input)
+  {
+  case 's':
+  case 'S':
+    start_process(pProcess);
+    break;
+
+  case 'q':
+  case 'Q':
+    stop_process(pProcess);
+    break;
+
+  case 'p':
+  case 'P':
+    pause_process(pProcess);
+    break;
+
+  case 'r':
+  case 'R':
+    resume_process(pProcess);
+    break;
+
+  case 'g':
+  case 'G':
+    get_process_remaining_time(pProcess);
+    break;
+  }
+}
