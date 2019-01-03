@@ -12,7 +12,6 @@
  *  file LICENSE or copy at https://mit-license.org/)
  */
 
-
 /*
  *  --------------------- ENUMERATION ---------------------
  */

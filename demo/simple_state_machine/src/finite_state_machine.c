@@ -5,7 +5,7 @@
  * \author  Nandkishor Biradar
  * \date    14 December 2018
 
- *  Copyright (c) 2018 Nandkishor Biradar
+ *  Copyright (c) 2018-2019 Nandkishor Biradar
  *  https://github.com/kiishor
 
  *  Distributed under the MIT License, (See accompanying
@@ -20,6 +20,17 @@
 
 #include "hsm.h"
 #include "finite_state_machine.h"
+
+/*
+ *  --------------------- ENUMERATION ---------------------
+ */
+
+typedef enum
+{
+  IDLE_STATE,
+  ACTIVE_STATE,
+  PAUSE_STATE
+}process_state_t;
 
 /*
  *  --------------------- Function prototype ---------------------
@@ -73,16 +84,6 @@ void init_process(process_t* const pProcess, uint32_t processTime)
   idle_entry_handler((state_machine_t *)pProcess);
 }
 
-static inline void start_process(process_t* const pProcess)
-{
-  pProcess->Timer = pProcess->Set_Time * 1000;
-}
-
-static inline void resume_process(process_t* const pProcess)
-{
-  pProcess->Timer = pProcess->Resume_Time;
-}
-
 static state_machine_result_t idle_entry_handler(state_machine_t* const pState)
 {
   process_t* const pProcess = (process_t*)pState;
@@ -90,7 +91,7 @@ static state_machine_result_t idle_entry_handler(state_machine_t* const pState)
 
   printf("Entering to idle state\n");
   printf("Supported events\n");
-  printf("1. 's' : Start process\n");
+  printf("'s' : Start process\n");
   return EVENT_HANDLED;
 }
 
@@ -99,7 +100,6 @@ static state_machine_result_t idle_handler(state_machine_t* const pState)
   switch(pState->Event)
   {
   case START:
-  case START_CAPS:
     return switch_state(pState, &Process_States[ACTIVE_STATE]);
 
   default:
@@ -110,7 +110,8 @@ static state_machine_result_t idle_handler(state_machine_t* const pState)
 
 static state_machine_result_t idle_exit_handler(state_machine_t* const pState)
 {
-  start_process((process_t*)pState);
+  process_t* const pProcess = (process_t*)pState;
+  pProcess->Timer = pProcess->Set_Time;
   printf("Exiting from idle state\n");
   return EVENT_HANDLED;
 }
@@ -119,35 +120,26 @@ static state_machine_result_t active_entry_handler(state_machine_t* const pState
 {
   printf("Entering to active state\n");
   printf("Supported events\n");
-  printf("1. 'q' : stop process\n");
-  printf("2. 'p' : Pause process\n");
-  printf("3. 't' : timeout\n" );
-  printf("4. 'g' : get time elapsed\n");
+  printf("'q' : stop process\n");
+  printf("'p' : Pause process\n");
+  printf("'t' : timeout\n" );
+  printf("'g' : get time elapsed\n");
 
   return EVENT_HANDLED;
 }
 
 static state_machine_result_t active_handler(state_machine_t* const pState)
 {
-  process_t* const pProcess = (process_t*)pState;
   switch(pState->Event)
   {
-  case QUIT:
-  case QUIT_CAPS:
+  case STOP:
     return switch_state(pState, &Process_States[IDLE_STATE]);
 
   case PAUSE:
-  case PAUSE_CAPS:
     return switch_state(pState, &Process_States[PAUSE_STATE]);
 
   case TIMEOUT:
-  case TIMEOUT_CAPS:
     return switch_state(pState, &Process_States[IDLE_STATE]);
-
-  case GET_TIME:
-  case GET_TIME_CAPS:
-    printf("Remaining time: %d.%d seconds\n", pProcess->Timer / 1000, (pProcess->Timer % 1000) / 100);
-    break;
 
   default:
     return EVENT_UN_HANDLED;
@@ -169,10 +161,10 @@ static state_machine_result_t paused_entry_handler(state_machine_t* const pState
 
   printf("Entering to pause state\n");
   printf("Supported events\n");
-  printf("1. 's' : restart process\n");
-  printf("2. 'q' : stop process\n");
-  printf("3. 'r' : resume process\n");
-  printf("4. 'g' : get time elapsed\n");
+  printf("'s' : restart process\n");
+  printf("'q' : stop process\n");
+  printf("'r' : resume process\n");
+  printf("'g' : get time elapsed\n");
   return EVENT_HANDLED;
 }
 
@@ -182,23 +174,15 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
   switch(pState->Event)
   {
   case START:
-  case START_CAPS:
-    start_process(pProcess);
+    pProcess->Timer = pProcess->Set_Time;
     return switch_state(pState, &Process_States[ACTIVE_STATE]);
 
-  case QUIT:
-  case QUIT_CAPS:
+  case STOP:
     return switch_state(pState, &Process_States[IDLE_STATE]);
 
   case RESUME:
-  case RESUME_CAPS:
-    resume_process(pProcess);
+    pProcess->Timer = pProcess->Resume_Time;
     return switch_state(pState, &Process_States[ACTIVE_STATE]);
-
-  case GET_TIME:
-  case GET_TIME_CAPS:
-    printf("Remaining time: %d.%d seconds\n", pProcess->Resume_Time / 1000, (pProcess->Resume_Time % 1000) / 100);
-    break;
 
   default:
     return EVENT_UN_HANDLED;
