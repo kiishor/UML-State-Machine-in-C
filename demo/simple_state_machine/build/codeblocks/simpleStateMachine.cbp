@@ -40,6 +40,11 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../../../src/hsm.h" />
+		<Unit filename="../../readme.md">
+			<Option compilerVar="CC" />
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
 		<Unit filename="../../src/finite_state_machine.c">
 			<Option compilerVar="CC" />
 		</Unit>

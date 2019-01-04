@@ -13,7 +13,7 @@ The framework contains three files
 3. hsm_config.h : Compile-time configuration of framework.
 
 To read more about finite state machine and hierarchical state machine please go through the following links.
-<https://en.wikipedia.org/wiki/UML_state_machine>  
+<https://en.wikipedia.org/wiki/UML_state_machine>
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
 
@@ -71,7 +71,7 @@ typedef struct finite_state_t{
 - Entry: pointer to function execute entry action of state
 - Exit: pointer to function to execute exit action of state
 
->The Handler must be initialized.  
+>The Handler must be initialized.
 >The Entry and Exit actions are optional and can be initialized to NULL if not required.
 
 If framework is configured to support hierarchical state machine. It contains additional three members to represent the hierarchical relation between the states.
@@ -148,7 +148,7 @@ State transition
 The framework supports two types of state transition,
 1. switch_state:
 
-```C 
+```C
 state_machine_result_t switch_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
 ```
 
@@ -156,7 +156,7 @@ state_machine_result_t switch_state(state_machine_t* const pState_Machine, const
 
 2. traverse_state:
 
-```C 
+```C
 state_machine_result_t traverse_state(state_machine_t* const pState_Machine, const state_t* pTarget_State);
 ```
    Use this function when you need to traverse through the hierarchy from source state to target state. It calls the exit action of each parent state of source while traversing from the source state. It calls the entry action of each parent state while traversing to the target state.
@@ -192,11 +192,11 @@ State machine logging
 The framework supports the logging mechanism for debugging purpose using two callback functions.
 User need to implement logger functions and pass it to `dispatch_event`.
 
-```C 
+```C
 typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
 typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
 ```
-### state_machine_event_logger 
+### state_machine_event_logger
 This function is called before dispatching the event to state machine. The framework passes 3 arguments to this callback function.
 
 - state_machine: index of state machine in the array
@@ -214,5 +214,5 @@ Start timer on `state_machine_event_logger` and stop on `state_machine_result_lo
 
 Demo
 --------
-simple state machine
+[simple state machine](demo/simple_state_machine/readme.md)
 
