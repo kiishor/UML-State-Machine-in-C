@@ -3,7 +3,7 @@ Simple state machine
 
 This example demonstrate a simple state machine of a process as shown below.
 
-![Process:Simple state machine](state_diagram.svg)
+![Process:Simple state machine](docs/state_diagram.svg)
 
 The process has 3 states
 1. Idle state
