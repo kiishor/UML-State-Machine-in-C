@@ -33,6 +33,7 @@
 			<Add option="-std=c++14" />
 			<Add option="-std=c11" />
 			<Add option="-fms-extensions" />
+			<Add option="-fpermissive" />
 			<Add option="-DHSM_CONFIG" />
 			<Add directory="../../../src" />
 			<Add directory="../../../../src" />
