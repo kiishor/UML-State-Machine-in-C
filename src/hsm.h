@@ -71,6 +71,7 @@ typedef struct finite_state_t{
 #endif
 }finite_state_t;
 
+#ifndef __cplusplus
 //! Hierarchical state structure
 typedef struct hierarchical_state_t
 {
@@ -80,6 +81,26 @@ typedef struct hierarchical_state_t
   const state_t* const Node;       //!< Child states of the current state.
   uint32_t Level;            //!< Hierarchy level from the top state.
 }hierarchical_state_t;
+
+#else
+// C++ doesn't support unnamed structure
+//! Hierarchical state structure
+typedef struct hierarchical_state_t
+{
+  state_handler Handler;      //!< State handler function
+  state_handler Entry;        //!< Entry action for state
+  state_handler Exit;          //!< Exit action for state.
+
+#if STATE_MACHINE_LOGGER
+  uint32_t Id;              //!< unique identifier of state within the single state machine
+#endif
+
+  const state_t* const Parent;    //!< Parent state of the current state.
+  const state_t* const Node;       //!< Child states of the current state.
+  uint32_t Level;            //!< Hierarchy level from the top state.
+}hierarchical_state_t;
+
+#endif // __cplusplus
 
 //! Abstract state machine structure
 struct state_machine_t
