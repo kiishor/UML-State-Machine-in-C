@@ -56,8 +56,12 @@ void* timer(void* vargp)
       if(SampleProcess.Timer > 0)
       {
         SampleProcess.Timer--;
+
+        printf("\rRemaining process time: %d ", SampleProcess.Timer);
+
         if(SampleProcess.Timer == 0)
         {
+          printf("\n");
           on_process_timedout(&SampleProcess);
           sem_post(&Semaphore);
         }
