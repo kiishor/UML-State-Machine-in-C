@@ -102,11 +102,6 @@ static inline void parse_cli(process_t* const pProcess, char input)
     resume_process(pProcess);
     break;
 
-  case 'g':
-  case 'G':
-    get_process_remaining_time(pProcess);
-    break;
-
   default:
     printf("Not a valid event\n");
     break;

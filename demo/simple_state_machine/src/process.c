@@ -123,7 +123,6 @@ static state_machine_result_t active_entry_handler(state_machine_t* const pState
   printf("Supported events\n");
   printf("'q' : stop process\n");
   printf("'p' : Pause process\n");
-  printf("'t' : timeout\n" );
   return EVENT_HANDLED;
 }
 
