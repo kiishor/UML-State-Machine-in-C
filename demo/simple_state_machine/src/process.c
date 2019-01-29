@@ -19,12 +19,13 @@
 #include <stdio.h>
 
 #include "hsm.h"
-#include "finite_state_machine.h"
+#include "process.h"
 
 /*
  *  --------------------- ENUMERATION ---------------------
  */
 
+//! List of states the process state machine
 typedef enum
 {
   IDLE_STATE,
@@ -123,8 +124,6 @@ static state_machine_result_t active_entry_handler(state_machine_t* const pState
   printf("'q' : stop process\n");
   printf("'p' : Pause process\n");
   printf("'t' : timeout\n" );
-  printf("'g' : get time elapsed\n");
-
   return EVENT_HANDLED;
 }
 
@@ -161,10 +160,8 @@ static state_machine_result_t paused_entry_handler(state_machine_t* const pState
 
   printf("Entering to pause state\n");
   printf("Supported events\n");
-  printf("'s' : restart process\n");
   printf("'q' : stop process\n");
   printf("'r' : resume process\n");
-  printf("'g' : get time elapsed\n");
   return EVENT_HANDLED;
 }
 
@@ -173,10 +170,6 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
   process_t* const pProcess = (process_t*)pState;
   switch(pState->Event)
   {
-  case START:
-    pProcess->Timer = pProcess->Set_Time;
-    return switch_state(pState, &Process_States[ACTIVE_STATE]);
-
   case STOP:
     return switch_state(pState, &Process_States[IDLE_STATE]);
 
