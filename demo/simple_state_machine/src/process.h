@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 /**
  * \file
  * \brief Simple finite state machine example
@@ -30,12 +33,13 @@ typedef enum
  *  --------------------- STRUCTURE ---------------------
  */
 
+//! process state machine
 typedef struct
 {
-  state_machine_t;
-  uint32_t Set_Time;
-  uint32_t Resume_Time;
-  uint32_t Timer;
+  state_machine_t;      //!< Abstract state machine
+  uint32_t Set_Time;    //! Set time of a process
+  uint32_t Resume_Time; //!< Remaining time when the process is paused
+  uint32_t Timer;       //!< Process timer
 }process_t;
 
 /*
@@ -102,5 +106,11 @@ static inline void parse_cli(process_t* const pProcess, char input)
   case 'G':
     get_process_remaining_time(pProcess);
     break;
+
+  default:
+    printf("Not a valid event\n");
+    break;
   }
 }
+
+#endif // PROCESS_H

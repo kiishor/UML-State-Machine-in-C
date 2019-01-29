@@ -22,7 +22,7 @@
 #include <semaphore.h>
 
 #include "hsm.h"
-#include "finite_state_machine.h"
+#include "process.h"
 
 /*
  *  --------------------- Global variables ---------------------

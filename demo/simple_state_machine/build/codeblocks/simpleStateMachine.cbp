@@ -40,20 +40,15 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../../../src/hsm.h" />
-		<Unit filename="../../readme.md">
-			<Option compilerVar="CC" />
-			<Option compile="1" />
-			<Option link="1" />
-		</Unit>
-		<Unit filename="../../src/finite_state_machine.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/finite_state_machine.h" />
+		<Unit filename="../../readme.md" />		
 		<Unit filename="../../src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../../src/process.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/process.h" />
 		<Unit filename="../hsm_config.h" />
-		<Unit filename="../src/finite_state_machine.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
