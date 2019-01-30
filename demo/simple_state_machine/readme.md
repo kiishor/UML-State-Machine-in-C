@@ -7,10 +7,12 @@ This example demonstrate a simple state machine of a process as shown below.
 
 ### The process has 3 states
 1. Idle state
+  
   This state waits for the **Start** event to occur. On **Start** event,
   it starts the process for defined period and switch to Active state.
 
 2. Active state
+  
   This state supports **Stop**, **Pause** and **Timeout** events.
   - The stop event causes the process to stop and return to idle state.
   - The Pause event causes the process to pause and switch to Paused state.
@@ -18,6 +20,7 @@ This example demonstrate a simple state machine of a process as shown below.
     The **Timeout** event causes the process to stop and return to idle state.
 
 3. Paused state
+
   This state supports **Resume** and **Stop** events.
   - The Resume event causes the process to resume and returns to active state.
   - The Stop event causes the process to stop and switch to Idle state.
