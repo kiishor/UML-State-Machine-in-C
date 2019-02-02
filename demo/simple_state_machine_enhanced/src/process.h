@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 /**
  * \file
  * \brief Simple finite state machine example
@@ -5,7 +8,7 @@
  * \author  Nandkishor Biradar
  * \date    14 December 2018
 
- *  Copyright (c) 2018 Nandkishor Biradar
+ *  Copyright (c) 2018-2019 Nandkishor Biradar
  *  https://github.com/kiishor
 
  *  Distributed under the MIT License, (See accompanying
@@ -30,12 +33,13 @@ typedef enum
  *  --------------------- STRUCTURE ---------------------
  */
 
+//! process state machine
 typedef struct
 {
-  state_machine_t;
-  uint32_t Set_Time;
-  uint32_t Resume_Time;
-  uint32_t Timer;
+  state_machine_t;      //!< Abstract state machine
+  uint32_t Set_Time;    //! Set time of a process
+  uint32_t Resume_Time; //!< Remaining time when the process is paused
+  uint32_t Timer;       //!< Process timer
 }process_t;
 
 /*
@@ -43,6 +47,12 @@ typedef struct
  */
 
 extern void init_process(process_t* const pProcess, uint32_t processTime);
+
+/*
+ *  --------------------- Inline functions ---------------------
+ */
+
+ // process APIs
 
 static inline void start_process(process_t* const pProcess)
 {
@@ -69,11 +79,13 @@ static inline void on_process_timedout(process_t* const pProcess)
   pProcess->Event = TIMEOUT;
 }
 
-static inline void get_process_remaining_time(process_t * const pProcess)
-{
-  printf("Remaining time: %d seconds\n", pProcess->Timer);
-}
-
+/** \brief Parses the user keyboard input and calls the respective API,
+ *  to trigger the events to state machine.
+ *
+ * \param pProcess process_t* const instance of process_t state machine.
+ * \param input char  user input
+ *
+ */
 static inline void parse_cli(process_t* const pProcess, char input)
 {
   switch(input)
@@ -98,9 +110,10 @@ static inline void parse_cli(process_t* const pProcess, char input)
     resume_process(pProcess);
     break;
 
-  case 'g':
-  case 'G':
-    get_process_remaining_time(pProcess);
+  default:
+    printf("Not a valid event\n");
     break;
   }
 }
+
+#endif // PROCESS_H

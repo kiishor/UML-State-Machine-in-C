@@ -19,11 +19,12 @@
 #include <stdio.h>
 
 #include "hsm.h"
-#include "finite_state_machine.h"
+#include "process.h"
 
 /*
  *  --------------------- DEFINITION ---------------------
  */
+
 #define ALL_PROCESS_STATE \
  ADD_STATE(IDLE_STATE, idle_handler, idle_entry_handler, idle_exit_handler)  \
  ADD_STATE(ACTIVE_STATE, active_handler, active_entry_handler, active_exit_handler)  \
@@ -32,6 +33,8 @@
 /*
  *  --------------------- ENUMERATION ---------------------
  */
+
+//! List of states in the process state machine
 #define ADD_STATE(name, ...)  name,
 typedef enum
 {
@@ -124,9 +127,6 @@ static state_machine_result_t active_entry_handler(state_machine_t* const pState
   printf("Supported events\n");
   printf("'q' : stop process\n");
   printf("'p' : Pause process\n");
-  printf("'t' : timeout\n" );
-  printf("'g' : get time elapsed\n");
-
   return EVENT_HANDLED;
 }
 
@@ -163,10 +163,8 @@ static state_machine_result_t paused_entry_handler(state_machine_t* const pState
 
   printf("Entering to pause state\n");
   printf("Supported events\n");
-  printf("'s' : restart process\n");
   printf("'q' : stop process\n");
   printf("'r' : resume process\n");
-  printf("'g' : get time elapsed\n");
   return EVENT_HANDLED;
 }
 
@@ -175,10 +173,6 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
   process_t* const pProcess = (process_t*)pState;
   switch(pState->Event)
   {
-  case START:
-    pProcess->Timer = pProcess->Set_Time;
-    return switch_state(pState, &Process_States[ACTIVE_STATE]);
-
   case STOP:
     return switch_state(pState, &Process_States[IDLE_STATE]);
 
