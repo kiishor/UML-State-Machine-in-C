@@ -35,11 +35,11 @@
 			<Add directory="../../../../src" />
 			<Add directory="../../build" />
 		</Compiler>
-		<Unit filename="../../../../README.md" />
 		<Unit filename="../../../../src/hsm.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../../../src/hsm.h" />
+		<Unit filename="../../readme.md" />
 		<Unit filename="../../src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -214,5 +214,5 @@ Start timer on `state_machine_event_logger` and stop on `state_machine_result_lo
 
 Demo
 --------
-[simple state machine](demo/simple_state_machine/readme.md)
-
+[simple state machine](demo/simple_state_machine/readme.md)  
+[simple state machine (enhanced)](demo/simple_state_machine_enhanced/readme.md)
