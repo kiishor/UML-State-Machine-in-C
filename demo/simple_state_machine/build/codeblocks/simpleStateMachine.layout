@@ -2,36 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="..\hsm_config.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-
-	<File name="..\..\src\process.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-
-		<Cursor>
-			<Cursor1 position="1572" topLine="31" />
-		</Cursor>
-	</File>
-	<File name="..\..\src\process.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3883" topLine="29" />
-		</Cursor>
-	</File>
-	<File name="..\..\src\main.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1838" topLine="71" />
-		</Cursor>
-	</File>
 	<File name="..\..\readme.md" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="777" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="..\..\..\..\src\hsm.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\src\process.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3110" topLine="79" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="..\..\..\..\src\hsm.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -39,9 +17,29 @@
 			<Cursor1 position="146" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="..\..\..\..\README.md" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\src\main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8727" topLine="209" />
+			<Cursor1 position="2665" topLine="91" />
+		</Cursor>
+	</File>
+	<File name="..\..\..\..\src\hsm.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3110" topLine="79" />
+		</Cursor>
+	</File>
+	<File name="..\..\src\process.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3883" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="..\hsm_config.h" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="867" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\..\..\README.md" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4421" topLine="108" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

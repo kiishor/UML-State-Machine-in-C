@@ -48,6 +48,12 @@ typedef struct
 
 extern void init_process(process_t* const pProcess, uint32_t processTime);
 
+/*
+ *  --------------------- Inline functions ---------------------
+ */
+
+ // process APIs
+
 static inline void start_process(process_t* const pProcess)
 {
   pProcess->Event = START;
@@ -73,11 +79,13 @@ static inline void on_process_timedout(process_t* const pProcess)
   pProcess->Event = TIMEOUT;
 }
 
-static inline void get_process_remaining_time(process_t * const pProcess)
-{
-  printf("Remaining time: %d seconds\n", pProcess->Timer);
-}
-
+/** \brief Parses the user keyboard input and calls the respective API,
+ *  to trigger the events to state machine.
+ *
+ * \param pProcess process_t* const instance of process_t state machine.
+ * \param input char  user input
+ *
+ */
 static inline void parse_cli(process_t* const pProcess, char input)
 {
   switch(input)
