@@ -35,4 +35,4 @@ static const state_t Process_States[] =
 };
 
 #undef ADD_STATE
-```C
+```
