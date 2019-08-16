@@ -212,7 +212,17 @@ This function is called after dispatching the event to state machine. The framew
 user can use this logging mechanism to also log the time consumed to handle the event by state machine.
 Start timer on `state_machine_event_logger` and stop on `state_machine_result_logger`.
 
-Demo
---------
+### Demo
 [simple state machine](demo/simple_state_machine/readme.md)  
 [simple state machine (enhanced)](demo/simple_state_machine_enhanced/readme.md)
+
+### Todo
+- Add more real world examples/demo's specially related to embedded systems
+- Add support of cmake so that different types of IDE and compilers can be supported in the demo's
+- Add support of continuous integration
+
+### More
+- For reporting issues/bugs or requesting featuers use GitHub issue tracker
+- for discussion, questions or feedback use  
+   https://groups.google.com/forum/#!forum/minimalist-uml-state-machine-in-c
+
