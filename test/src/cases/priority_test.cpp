@@ -13,20 +13,27 @@
  */
 
 #include "catch.hpp"
+#define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#include "hippomocks.h"
+
 #include "hsm.h"
-#include "gmock/gmock.h"
-#include "gmock-global.h"
 
 namespace priority_test
 {
 
-using ::testing::Return;
-using ::testing::InSequence;
-using ::testing::Invoke;
+state_machine_result_t handler1(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
 
-MOCK_GLOBAL_FUNC1(handler1, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(handler2, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(handler3, state_machine_result_t(state_machine_t * const));
+state_machine_result_t handler2(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t handler3(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
 
 state_machine_t machine1, machine2, machine3;
 
@@ -48,17 +55,32 @@ SCENARIO("Priority test ")
 
   const static state_t testHSM[] =
   {
-      handler1,
+    handler1,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    0
   };
 
   const static state_t test1HSM[] =
   {
       handler2,
+      NULL,
+      NULL,
+      NULL,
+      NULL,
+      0
   };
 
   const static state_t test2HSM[] =
   {
-      handler3,
+    handler3,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    0
   };
 
   typedef enum
@@ -84,11 +106,10 @@ SCENARIO("Priority test ")
       machine2.Event = EN_EVENT2;
       machine3.Event = EN_EVENT3;
 
-      InSequence s;
-
-      EXPECT_GLOBAL_CALL(handler1, handler1(&machine1));
-      EXPECT_GLOBAL_CALL(handler2, handler2(&machine2));
-      EXPECT_GLOBAL_CALL(handler3, handler3(&machine3));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(handler1).With(&machine1).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(handler2).With(&machine2).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(handler3).With(&machine3).Return(EVENT_HANDLED);
 
       THEN( "It invokes handler as per priority of state machines" )
       {
@@ -103,12 +124,10 @@ SCENARIO("Priority test ")
     {
       machine2.Event = EN_EVENT1;
 
-      InSequence s;
-
-      EXPECT_GLOBAL_CALL(handler2, handler2(&machine2))
-      .WillOnce(Invoke(&triggerEvent));
-      EXPECT_GLOBAL_CALL(handler1, handler1(&machine1));
-      EXPECT_GLOBAL_CALL(handler3, handler3(&machine3));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(handler2).With(&machine2).Do(triggerEvent);
+      mocks.ExpectCallFunc(handler1).With(&machine1).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(handler3).With(&machine3).Return(EVENT_HANDLED);
 
       THEN("event handler calls higher priority handler before lower priority handler")
       {
@@ -123,12 +142,10 @@ SCENARIO("Priority test ")
     {
       machine3.Event = EN_EVENT1;
 
-      InSequence s;
-
-      EXPECT_GLOBAL_CALL(handler3, handler3(&machine3))
-      .WillOnce(Invoke(&selfTrigger));
-      EXPECT_GLOBAL_CALL(handler2, handler2(&machine2));
-      EXPECT_GLOBAL_CALL(handler3, handler3(&machine3));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(handler3).With(&machine3).Do(selfTrigger);
+      mocks.ExpectCallFunc(handler2).With(&machine2).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(handler3).With(&machine3).Return(EVENT_HANDLED);
 
       THEN("event handler calls higher priority handler before lower priority handler")
       {
