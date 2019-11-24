@@ -11,42 +11,105 @@
  *  Distributed under the MIT License, (See accompanying
  *  file LICENSE or copy at https://mit-license.org/)
  */
- #include "catch.hpp"
-#include "hsm.h"
-#include "gmock/gmock.h"
-#include "gmock-global.h"
 
-using ::testing::InSequence;
-using ::testing::Return;
+#include "catch.hpp"
+#define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#include "hippomocks.h"
+
+#include "hsm.h"
 
 namespace hierarchical_state_transition {
-MOCK_GLOBAL_FUNC1(level1_child1_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level1_child1_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level1_child2_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level1_child2_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level1_child3_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level1_child3_exit_handler, state_machine_result_t(state_machine_t * const));
 
-MOCK_GLOBAL_FUNC1(level2_child1_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child1_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child2_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child2_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child3_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child3_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child4_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level2_child4_exit_handler, state_machine_result_t(state_machine_t * const));
-
-MOCK_GLOBAL_FUNC1(level3_child1_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child1_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child2_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child2_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child3_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child3_exit_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child4_entry_handler, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(level3_child4_exit_handler, state_machine_result_t(state_machine_t * const));
-
-namespace hierarchical_state_transition
+state_machine_result_t level1_child1_entry_handler(state_machine_t * const)
 {
+  return EVENT_HANDLED;
+}
+state_machine_result_t level1_child1_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level1_child2_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level1_child2_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level1_child3_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level1_child3_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+
+state_machine_result_t level2_child1_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child1_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child2_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child2_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child3_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child3_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child4_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level2_child4_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+
+state_machine_result_t level3_child1_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child1_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child2_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child2_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child3_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child3_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child4_entry_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t level3_child4_exit_handler(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
 
 extern const hierarchical_state_t Level2_Child1_HSM[];
 extern const hierarchical_state_t Level2_Child3_HSM[];
@@ -173,12 +236,12 @@ SCENARIO("Transition from same level and same parent")
     state_machine_t machine;
     WHEN("Transition from Level3_Child1 to Level3_Child2")
     {
-      InSequence s;
 
       machine.State = Level3_Child1_HSM;
 
-      EXPECT_GLOBAL_CALL(level3_child1_exit_handler, level3_child1_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level3_child2_entry_handler, level3_child2_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level3_child1_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level3_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -200,11 +263,11 @@ SCENARIO("Transition from same level and different parent states")
       {
         machine.State = Level3_Child3_HSM;
 
-        EXPECT_GLOBAL_CALL(level3_child3_exit_handler, level3_child3_exit_handler(&machine))
-        .WillRepeatedly(Return(TRIGGERED_TO_SELF));
-        EXPECT_GLOBAL_CALL(level2_child3_exit_handler, level2_child3_exit_handler(&machine));
-        EXPECT_GLOBAL_CALL(level2_child4_entry_handler, level2_child4_entry_handler(&machine));
-        EXPECT_GLOBAL_CALL(level3_child4_entry_handler, level3_child4_entry_handler(&machine));
+        MockRepository mocks;
+        mocks.ExpectCallFunc(level3_child3_exit_handler).With(&machine).Return(TRIGGERED_TO_SELF);
+        mocks.ExpectCallFunc(level2_child3_exit_handler).With(&machine).Return(EVENT_HANDLED);
+        mocks.ExpectCallFunc(level2_child4_entry_handler).With(&machine).Return(EVENT_HANDLED);
+        mocks.ExpectCallFunc(level3_child4_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
         THEN("traverse_state invokes respective entry and exit handlers")
         {
@@ -214,16 +277,17 @@ SCENARIO("Transition from same level and different parent states")
       }
     }
 
-    WHEN("Transition from Level3_Child4 to Level3_Child1")
+    WHEN("Transition from Level3_Child4 to Level3_Child2")
     {
       machine.State = Level3_Child4_HSM;
 
-      EXPECT_GLOBAL_CALL(level3_child4_exit_handler, level3_child4_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child4_exit_handler, level2_child4_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child2_exit_handler, level1_child2_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child1_entry_handler, level1_child1_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child2_entry_handler, level2_child2_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level3_child2_entry_handler, level3_child2_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level3_child4_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child4_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child2_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child1_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level3_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -243,10 +307,11 @@ SCENARIO("Transition from low level to high level states")
     {
       machine.State = Level3_Child3_HSM;
 
-      EXPECT_GLOBAL_CALL(level3_child3_exit_handler, level3_child3_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child3_exit_handler, level2_child3_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child2_exit_handler, level1_child2_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child3_entry_handler, level1_child3_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level3_child3_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child3_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child2_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child3_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -259,9 +324,10 @@ SCENARIO("Transition from low level to high level states")
     {
       machine.State = Level3_Child1_HSM;
 
-      EXPECT_GLOBAL_CALL(level3_child1_exit_handler, level3_child1_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child2_exit_handler, level2_child2_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child1_entry_handler, level2_child1_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level3_child1_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child2_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child1_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -274,11 +340,12 @@ SCENARIO("Transition from low level to high level states")
     {
       machine.State = Level3_Child4_HSM;
 
-      EXPECT_GLOBAL_CALL(level3_child4_exit_handler, level3_child4_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child4_exit_handler, level2_child4_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child2_exit_handler, level1_child2_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child1_entry_handler, level1_child1_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child1_entry_handler, level2_child1_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level3_child4_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child4_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child2_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child1_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child1_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -298,10 +365,11 @@ SCENARIO("Transition from high level to low level states")
     {
       machine.State = &Level1_HSM[2];
 
-      EXPECT_GLOBAL_CALL(level1_child3_exit_handler, level1_child3_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child1_entry_handler, level1_child1_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child2_entry_handler, level2_child2_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level3_child2_entry_handler, level3_child2_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level1_child3_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child1_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level3_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -314,9 +382,10 @@ SCENARIO("Transition from high level to low level states")
     {
       machine.State = Level2_Child1_HSM;
 
-      EXPECT_GLOBAL_CALL(level2_child1_exit_handler, level2_child1_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child2_entry_handler, level2_child2_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level3_child2_entry_handler, level3_child2_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level2_child1_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level3_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -329,11 +398,12 @@ SCENARIO("Transition from high level to low level states")
     {
       machine.State = Level2_Child1_HSM;
 
-      EXPECT_GLOBAL_CALL(level2_child1_exit_handler, level2_child1_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child1_exit_handler, level1_child1_exit_handler(&machine));
-      EXPECT_GLOBAL_CALL(level1_child2_entry_handler, level1_child2_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level2_child4_entry_handler, level2_child4_entry_handler(&machine));
-      EXPECT_GLOBAL_CALL(level3_child4_entry_handler, level3_child4_entry_handler(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(level2_child1_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child1_exit_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level1_child2_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level2_child4_entry_handler).With(&machine).Return(EVENT_HANDLED);
+      mocks.ExpectCallFunc(level3_child4_entry_handler).With(&machine).Return(EVENT_HANDLED);
 
       THEN("traverse_state invokes respective entry and exit handlers")
       {
@@ -345,5 +415,5 @@ SCENARIO("Transition from high level to low level states")
 }
 
 }
-}
+
 

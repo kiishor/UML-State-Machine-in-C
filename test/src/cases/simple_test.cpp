@@ -11,34 +11,32 @@
  *  Distributed under the MIT License, (See accompanying
  *  file LICENSE or copy at https://mit-license.org/)
  */
- #include "catch.hpp"
-#include "hsm.h"
-#include "gmock/gmock.h"
-#include "gmock-global.h"
+#include "catch.hpp"
+#define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#include "hippomocks.h"
 
-using ::testing::Return;
-using ::testing::Field;
-using ::testing::AllOf;
-using ::testing::Invoke;
-using ::testing::InSequence;
+#include "hsm.h"
 
 namespace simple_test
 {
 
-MOCK_GLOBAL_FUNC1(handler, state_machine_result_t(state_machine_t * const));
-
-state_machine_result_t selfTrigger(state_machine_t * const pMachine)
+state_machine_result_t handler(state_machine_t * const pMachine)
 {
-  REQUIRE(pMachine->Event == 1);
-  pMachine->Event = 2;
-  return TRIGGERED_TO_SELF;
+  return EVENT_HANDLED;
 }
 
 SCENARIO("Simple State machine handling event")
 {
   const state_t testHSM[1] =
   {
-    handler
+    handler,
+    NULL,
+    NULL,
+    #if HIERARCHICAL_STATES
+    NULL,
+    NULL,
+    0
+    #endif
   };
 
   GIVEN( "A simple state machine" )
@@ -51,9 +49,15 @@ SCENARIO("Simple State machine handling event")
       machine.State = testHSM;    // initial state
       machine.Event = 1;          // trigger event to state machine
 
-      // Verify that state machines calls the handler for the event.
-      EXPECT_GLOBAL_CALL(handler,
-                         handler(AllOf((&machine), Field(&state_machine_t::State, testHSM), Field(&state_machine_t::Event, 1))));
+      MockRepository mocks;
+//      // Verify that state machines calls the handler for the event.
+      mocks.ExpectCallFunc(handler).With(&machine).Do(
+        [&testHSM](state_machine_t * const pMachine)
+        {
+          REQUIRE(pMachine->Event == 1);
+          REQUIRE(pMachine->State == testHSM);
+          return EVENT_HANDLED;
+        });
 
       THEN( "It invokes the state handler " )
       {
@@ -67,9 +71,16 @@ SCENARIO("Simple State machine handling event")
       machine.State = &testHSM[0];
       machine.Event = 1;
 
+      MockRepository mocks;
+
       // handler returns  error
-      EXPECT_GLOBAL_CALL(handler, handler(&machine))
-      .WillOnce(Return(EVENT_UN_HANDLED));
+      mocks.ExpectCallFunc(handler).With(&machine).Do(
+        [&testHSM](state_machine_t * const pMachine)
+        {
+          REQUIRE(pMachine->Event == 1);
+          REQUIRE(pMachine->State == testHSM);
+          return EVENT_UN_HANDLED;
+        });
 
       THEN( " event handler returns error" )
       {
@@ -81,11 +92,25 @@ SCENARIO("Simple State machine handling event")
     {
       machine.State = &testHSM[0];
       machine.Event = 1;
-      InSequence s;
 
-      EXPECT_GLOBAL_CALL(handler, handler(AllOf((&machine), Field(&state_machine_t::Event, 1))))
-      .WillOnce(Invoke(&selfTrigger));
-      EXPECT_GLOBAL_CALL(handler, handler(AllOf((&machine), Field(&state_machine_t::Event, 2))));
+      MockRepository mocks;
+      // Verify that state machines calls the handler for the event.
+      mocks.ExpectCallFunc(handler).With(&machine).Do(
+        [&testHSM](state_machine_t * const pMachine)
+        {
+          REQUIRE(pMachine->Event == 1);
+          REQUIRE(pMachine->State == testHSM);
+          pMachine->Event = 2;
+          return TRIGGERED_TO_SELF;
+        });
+
+      mocks.ExpectCallFunc(handler).With(&machine).Do(
+        [&testHSM](state_machine_t * const pMachine)
+        {
+          REQUIRE(pMachine->Event == 2);
+          REQUIRE(pMachine->State == testHSM);
+          return EVENT_HANDLED;
+        });
 
       THEN( "Handler is again invoked with newly triggered event" )
       {

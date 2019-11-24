@@ -13,20 +13,26 @@
  */
 
 #include "catch.hpp"
-#include "hsm.h"
-#include "gmock/gmock.h"
-#include "gmock-global.h"
+#define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#include "hippomocks.h"
 
-using ::testing::Return;
-using ::testing::InSequence;
-using ::testing::Invoke;
+#include "hsm.h"
 
 namespace hierarchical_test
 {
 
-MOCK_GLOBAL_FUNC1(handler1, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(handler2, state_machine_result_t(state_machine_t * const));
-MOCK_GLOBAL_FUNC1(handler3, state_machine_result_t(state_machine_t * const));
+state_machine_result_t handler1(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t handler2(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
+state_machine_result_t handler3(state_machine_t * const)
+{
+  return EVENT_HANDLED;
+}
 
 extern const hierarchical_state_t childHSM[1];
 const hierarchical_state_t rootHSM =
@@ -84,11 +90,10 @@ typedef enum
     {
       machine.Event = EN_EVENT1;
 
-      EXPECT_GLOBAL_CALL(handler3, handler3(&machine))
-      .WillOnce(Return(EVENT_UN_HANDLED));
-      EXPECT_GLOBAL_CALL(handler2, handler2(&machine))
-      .WillOnce(Return(EVENT_UN_HANDLED));
-      EXPECT_GLOBAL_CALL(handler1, handler1(&machine));
+      MockRepository mocks;
+      mocks.ExpectCallFunc(handler3).With(&machine).Return(EVENT_UN_HANDLED);
+      mocks.ExpectCallFunc(handler2).With(&machine).Return(EVENT_UN_HANDLED);
+      mocks.ExpectCallFunc(handler1).With(&machine).Return(EVENT_HANDLED);
 
       THEN( "Machine invokes the parent handler")
       {

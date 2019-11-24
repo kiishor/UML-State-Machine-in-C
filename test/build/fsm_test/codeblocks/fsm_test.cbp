@@ -30,8 +30,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
 			<Add option="-std=c11" />
+			<Add option="-std=c++14" />
 			<Add option="-fms-extensions" />
 			<Add option="-fpermissive" />
 			<Add option="-DHSM_CONFIG" />
@@ -39,10 +39,6 @@
 			<Add directory="../../../../src" />
 			<Add directory="../../../src" />
 		</Compiler>
-		<Linker>
-			<Add library="../../../src/lib/libgmock.a" />
-			<Add library="../../../src/lib/libgmock_main.a" />
-		</Linker>
 		<Unit filename="../../../../src/hsm.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -110,6 +106,7 @@
 			<envvars />
 			<debugger />
 			<lib_finder disable_auto="1" />
+			<fortran_project />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
