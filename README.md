@@ -202,8 +202,8 @@ If you want to disable variable length array used in the framework,
 either due to compiler doesn't support or some other reason,
 then `HSM_USE_VARIABLE_LENGTH_ARRAY` to 0.
 
-If you disable "variable length array" then you need to manually provide the maximum hierarchical level of all the state machines.
-use `MAX_HIERARCHICAL_LEVEL` to set the maximum hierarchical level. This should be highest `state_t::Level` value of all the state machines.
+If you disable "variable length array" then you need to manually provide the highest value of hierarchical level among all the state machines.
+use `MAX_HIERARCHICAL_LEVEL` to set the maximum hierarchical level. This should be highest `state_t::Level` value among all the state machines.
 
 By default, framework uses variable length array implementation.
 ```C
