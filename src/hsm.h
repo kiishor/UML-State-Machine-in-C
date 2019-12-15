@@ -32,6 +32,10 @@
 #define STATE_MACHINE_LOGGER     0        //!< Disable the logging of state machine
 #endif // STATE_MACHINE_LOGGER
 
+#ifndef HSM_USE_VARIABLE_LENGTH_ARRAY
+#define HSM_USE_VARIABLE_LENGTH_ARRAY 1
+#endif
+
 /*
  *  --------------------- ENUMERATION ---------------------
  */
@@ -41,7 +45,7 @@ typedef enum
 {
   EVENT_HANDLED,      //!< Event handled successfully.
   EVENT_UN_HANDLED,    //!< Event could not be handled.
-  //!< Handler handled the Event successfully, and posted new event to itself.
+  //!< Handler handled the Event successfully and posted new event to itself.
   TRIGGERED_TO_SELF,
 }state_machine_result_t;
 
