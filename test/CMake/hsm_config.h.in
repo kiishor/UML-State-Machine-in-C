@@ -1,0 +1,12 @@
+#ifndef HSM_CONFIG_H
+	#define HSM_CONFIG_H
+
+// Enable the hierarchical state machine
+// 0 : Finite state machine
+// 1 : Hierarchical state machine
+#define	HIERARCHICAL_STATES				${HIERARCHICAL_STATES}
+
+#define HSM_USE_UNNAMED_STRUCT			${HSM_USE_UNNAMED_STRUCT}
+#define HSM_USE_VARIABLE_LENGTH_ARRAY	${HSM_USE_VARIABLE_LENGTH_ARRAY}
+
+#endif // HSM_CONFIG_H

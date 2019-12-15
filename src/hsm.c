@@ -175,7 +175,12 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
   bool triggered_to_self = false;
   pState_Machine->State = pTarget_State;    // Save the target node
 
+#if (HSM_USE_VARIABLE_LENGTH_ARRAY == 1)
   const state_t *pTarget_Path[pTarget_State->Level];  // Array to store the target node path
+#else
+  const state_t* pTarget_Path[5];     // Array to store the target node path
+#endif
+
   uint32_t index = 0;
 
   // make the source state & target state at the same hierarchy level.

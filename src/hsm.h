@@ -32,6 +32,15 @@
 #define STATE_MACHINE_LOGGER     0        //!< Disable the logging of state machine
 #endif // STATE_MACHINE_LOGGER
 
+#ifndef HSM_USE_UNNAMED_STRUCT
+#define HSM_USE_UNNAMED_STRUCT 1
+#endif
+
+#ifndef HSM_USE_VARIABLE_LENGTH_ARRAY
+#define HSM_USE_VARIABLE_LENGTH_ARRAY 1
+#endif
+
+
 /*
  *  --------------------- ENUMERATION ---------------------
  */
@@ -71,7 +80,7 @@ typedef struct finite_state_t{
 #endif
 }finite_state_t;
 
-#ifndef __cplusplus
+#if (!defined(__cplusplus) && (HSM_USE_UNNAMED_STRUCT == 1))
 //! Hierarchical state structure
 typedef struct hierarchical_state_t
 {
@@ -131,7 +140,7 @@ extern state_machine_result_t traverse_state(state_machine_t* const pState_Machi
 #endif // HIERARCHICAL_STATES
 
 extern state_machine_result_t switch_state(state_machine_t* const pState_Machine,
-                                                    const state_t* pTarget_State);
+                                                    const state_t* const pTarget_State);
 
 #ifdef __cplusplus
 }
