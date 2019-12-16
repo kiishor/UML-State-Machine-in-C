@@ -209,7 +209,7 @@ By default, framework uses variable length array implementation.
 ```C
 // Enable the state machine logging
 // 0: disable variable length array used in hsm.c
-// 1: enable variable length aray used in
+// 1: enable variable length aray used in hsm.c
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 ```
 
