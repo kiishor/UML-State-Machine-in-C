@@ -178,7 +178,13 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
 #if (HSM_USE_VARIABLE_LENGTH_ARRAY == 1)
   const state_t *pTarget_Path[pTarget_State->Level];  // Array to store the target node path
 #else
-  const state_t* pTarget_Path[5];     // Array to store the target node path
+  #if  (!defined(MAX_HIERARCHICAL_LEVEL) || (MAX_HIERARCHICAL_LEVEL == 0))
+  #error "MAX_HIERARCHICAL_LEVEL is undefined."\
+         "Define the maximum hierarchical level of the state machine or \
+          use variable length array by setting HSM_USE_VARIABLE_LENGTH_ARRAY to 1"
+  #endif
+
+  const state_t* pTarget_Path[MAX_HIERARCHICAL_LEVEL];     // Array to store the target node path
 #endif
 
   uint32_t index = 0;

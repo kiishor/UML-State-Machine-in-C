@@ -40,7 +40,6 @@
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 #endif
 
-
 /*
  *  --------------------- ENUMERATION ---------------------
  */
@@ -50,7 +49,7 @@ typedef enum
 {
   EVENT_HANDLED,      //!< Event handled successfully.
   EVENT_UN_HANDLED,    //!< Event could not be handled.
-  //!< Handler handled the Event successfully, and posted new event to itself.
+  //!< Handler handled the Event successfully and posted new event to itself.
   TRIGGERED_TO_SELF,
 }state_machine_result_t;
 
@@ -69,7 +68,7 @@ typedef state_machine_result_t (*state_handler) (state_machine_t* const State);
 typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
 typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
 
-// finite state structure
+//! finite state structure
 typedef struct finite_state_t{
   state_handler Handler;      //!< State handler function
   state_handler Entry;        //!< Entry action for state
