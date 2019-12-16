@@ -32,6 +32,10 @@
 #define STATE_MACHINE_LOGGER     0        //!< Disable the logging of state machine
 #endif // STATE_MACHINE_LOGGER
 
+#ifndef HSM_USE_UNNAMED_STRUCT
+#define HSM_USE_UNNAMED_STRUCT 1
+#endif
+
 #ifndef HSM_USE_VARIABLE_LENGTH_ARRAY
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 #endif
@@ -64,7 +68,7 @@ typedef state_machine_result_t (*state_handler) (state_machine_t* const State);
 typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
 typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
 
-// finite state structure
+//! finite state structure
 typedef struct finite_state_t{
   state_handler Handler;      //!< State handler function
   state_handler Entry;        //!< Entry action for state
@@ -75,7 +79,7 @@ typedef struct finite_state_t{
 #endif
 }finite_state_t;
 
-#ifndef __cplusplus
+ #if (!defined(__cplusplus) && (HSM_USE_UNNAMED_STRUCT == 1))
 //! Hierarchical state structure
 typedef struct hierarchical_state_t
 {
