@@ -177,7 +177,6 @@ By default, the framework supports hierarchical state machine. Use "hsm_config.h
 Change the value of `HIERARCHICAL_STATES` (in the "hsm_config.h") to enable/disable **hierarchical state machine**.
 
 ```C
-// Enable the hierarchical state machine
 // 0 : disable hierarchical state machine. Only Finite state machine is supported.
 // 1 : enable Hierarchical state machine. Both finite and hierarchical state machine is supported.
 #define  HIERARCHICAL_STATES      0
@@ -189,7 +188,6 @@ Change the value of `STATE_MACHINE_LOGGER` to enable/disable state machine loggi
 By default, logging is disabled.
 
 ```C
-// Enable the state machine logging
 // 0: disable the state machine logger
 // 1: enable the state machine logger
 #define STATE_MACHINE_LOGGER     1
@@ -207,11 +205,25 @@ use `MAX_HIERARCHICAL_LEVEL` to set the maximum hierarchical level. This should 
 
 By default, framework uses variable length array implementation.
 ```C
-// Enable the state machine logging
+
 // 0: disable variable length array used in hsm.c
 // 1: enable variable length aray used in hsm.c
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 ```
+
+### Suppress anonymous structures
+
+The framework uses anonymous structure in `hierarchical_state_t` structure in hsm.h.
+If the compiler doesn't support this feature, it can be disabled by setting `HSM_USE_UNNAMED_STRUCT` to 0.
+
+By default, framework uses anonymous structure.
+
+```C
+// 0: disable anonymous structure in hsm.h
+// 1: Uses anonymous structure in hsm.h
+#define HSM_USE_UNNAMED_STRUCT 1
+```
+
 
 State machine logging
 ---------------------
