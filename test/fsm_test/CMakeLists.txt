@@ -50,7 +50,6 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
     target_compile_options( fsm_UnitTest PRIVATE -Werror )
 	set(HSM_USE_UNNAMED_STRUCT 1)
-	set(HSM_USE_VARIABLE_LENGTH_ARRAY 1)
 endif()
 
 # Clang specific options go here
@@ -63,11 +62,10 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
     target_compile_options( fsm_UnitTest PRIVATE /w44265 /w44061 /w44062 /w45038 )
     target_compile_options( fsm_UnitTest PRIVATE /WX)
 	set(HSM_USE_UNNAMED_STRUCT 0)
-	set(HSM_USE_VARIABLE_LENGTH_ARRAY 0)
 endif()
 
 target_compile_definitions(fsm_UnitTest PRIVATE HSM_CONFIG)
-configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../CMake/hsm_config.h.in"
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../../CMake/hsm_config.h.in"
             "${CMAKE_CURRENT_BINARY_DIR}/hsm_config.h" )
 			
 

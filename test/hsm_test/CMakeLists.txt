@@ -66,10 +66,11 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
     target_compile_options( hsm_UnitTest PRIVATE /WX)
 	set(HSM_USE_UNNAMED_STRUCT 0)
 	set(HSM_USE_VARIABLE_LENGTH_ARRAY 0)
+	set(MAX_HIERARCHICAL_LEVEL 3)
 endif()
 
 target_compile_definitions(hsm_UnitTest PRIVATE HSM_CONFIG)
-configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../CMake/hsm_config.h.in"
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../../CMake/hsm_config.h.in"
             "${CMAKE_CURRENT_BINARY_DIR}/hsm_config.h" )
 			
 
