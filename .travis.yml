@@ -15,10 +15,6 @@ addons:
 script:
   - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
   - cd test/fsm_test
-  - md build
-  - cd build
-  - md MinGW
-  - cd MinGW
-  - cmake -G "MinGW Makefiles" ../..
+  - cmake -G "Unix Makefiles"
   - cmake --build .
  
