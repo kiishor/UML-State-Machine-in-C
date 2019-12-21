@@ -33,12 +33,24 @@ include_directories(
 						${TARGET_DIR}
 					)
 
+set(CPP_VERSION 11)
+if ("cxx_std_14" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+	set(CPP_VERSION 14)
+endif()
 
-set(CMAKE_CXX_STANDARD 14)
+message("Your compiler supports : cpp${CPP_VERSION}")
+set(CMAKE_CXX_STANDARD ${CPP_VERSION})
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_STANDARD 11)
+set(C_VERSION 99)
+if ("c_std_11" IN_LIST CMAKE_C_COMPILE_FEATURES)
+	set(C_VERSION 11)
+endif()
+
+set(CMAKE_C_STANDARD ${C_VERSION})
 set(CMAKE_C_STANDARD_REQUIRED ON)
+message("Your compiler supports : c${C_VERSION}")
 
 set(HIERARCHICAL_STATES 0)
 
