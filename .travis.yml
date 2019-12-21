@@ -1,14 +1,18 @@
 dist: trusty
-sudo: false
+sudo: required
 language: cpp
+compiler: gcc
 
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-7 
+      - gcc-7
+      - g++-7
+      - cmake
 
 script:
-  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-7 cmake .
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
   - cmake --build .
+ 
