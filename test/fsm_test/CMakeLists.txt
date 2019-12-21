@@ -57,11 +57,11 @@ set(HIERARCHICAL_STATES 0)
 add_executable(fsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
 add_test(fsm_UnitTest fsm_UnitTest)
 
+set(HSM_USE_UNNAMED_STRUCT 0)
 
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
     target_compile_options( fsm_UnitTest PRIVATE -Werror )
-	set(HSM_USE_UNNAMED_STRUCT 1)
 endif()
 
 # Clang specific options go here
@@ -73,7 +73,6 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
     STRING(REGEX REPLACE "/W[0-9]" "/W4" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) # override default warning level
     target_compile_options( fsm_UnitTest PRIVATE /w44265 /w44061 /w44062 /w45038 )
     target_compile_options( fsm_UnitTest PRIVATE /WX)
-	set(HSM_USE_UNNAMED_STRUCT 0)
 endif()
 
 target_compile_definitions(fsm_UnitTest PRIVATE HSM_CONFIG)
