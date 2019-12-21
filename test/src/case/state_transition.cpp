@@ -20,22 +20,22 @@
 namespace state_transition
 {
 
-state_machine_result_t handler1Entry(state_machine_t* const pMachine)
+state_machine_result_t handler1Entry(state_machine_t* const)
 {
   return EVENT_HANDLED;
 }
 
-state_machine_result_t handler1Exit(state_machine_t* const pMachine)
+state_machine_result_t handler1Exit(state_machine_t* const)
 {
   return EVENT_HANDLED;
 }
 
-state_machine_result_t handler2Entry(state_machine_t* const pMachine)
+state_machine_result_t handler2Entry(state_machine_t* const)
 {
   return EVENT_HANDLED;
 }
 
-state_machine_result_t handler2Exit(state_machine_t* const pMachine)
+state_machine_result_t handler2Exit(state_machine_t* const)
 {
   return EVENT_HANDLED;
 }
@@ -50,7 +50,8 @@ SCENARIO("Finite state machine transition")
       handler1Exit,
       #if HIERARCHICAL_STATES
       NULL,
-      NULL
+      NULL,
+      0
       #endif
     },
     {
@@ -59,7 +60,8 @@ SCENARIO("Finite state machine transition")
       handler2Exit,
       #if HIERARCHICAL_STATES
       NULL,
-      NULL
+      NULL,
+      0
       #endif
     }
   };

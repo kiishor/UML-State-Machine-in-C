@@ -20,7 +20,7 @@
 namespace simple_test
 {
 
-state_machine_result_t handler(state_machine_t * const pMachine)
+state_machine_result_t handler(state_machine_t * const)
 {
   return EVENT_HANDLED;
 }

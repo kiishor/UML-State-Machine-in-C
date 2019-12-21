@@ -1,0 +1,75 @@
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+project("fsm_UnitTest")
+
+# Setup path for testcase dir
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../src)
+set(TESTCASE_DIR ${SRC_DIR}/case )
+set(TARGET_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../src)
+
+set(TESTCASE_FILES
+    ${TESTCASE_DIR}/simple_test.cpp
+    ${TESTCASE_DIR}/priority_test.cpp
+    ${TESTCASE_DIR}/state_transition.cpp
+)
+
+set(TARGET_FILES 
+	${TARGET_DIR}/hsm.c
+	)
+
+set (TEST_FILES 
+	${SRC_DIR}/main.cpp)
+
+set (HEADER_FILES
+		${SRC_DIR}/catch.hpp
+		${SRC_DIR}/hippomocks.h
+		${TARGET_DIR}/hsm.h
+	)
+SOURCE_GROUP("Tests" FILES ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
+
+include(CTest)
+
+include_directories(
+						${SRC_DIR} 
+						${TARGET_DIR}
+					)
+
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+set(HIERARCHICAL_STATES 0)
+
+add_executable(fsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
+add_test(fsm_UnitTest fsm_UnitTest)
+
+
+if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
+    target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
+    target_compile_options( fsm_UnitTest PRIVATE -Werror )
+	set(HSM_USE_UNNAMED_STRUCT 1)
+endif()
+
+# Clang specific options go here
+if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
+    target_compile_options( fsm_UnitTest PRIVATE -Wweak-vtables -Wexit-time-destructors -Wglobal-constructors -Wmissing-noreturn )
+endif()
+
+if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
+    STRING(REGEX REPLACE "/W[0-9]" "/W4" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) # override default warning level
+    target_compile_options( fsm_UnitTest PRIVATE /w44265 /w44061 /w44062 /w45038 )
+    target_compile_options( fsm_UnitTest PRIVATE /WX)
+	set(HSM_USE_UNNAMED_STRUCT 0)
+endif()
+
+target_compile_definitions(fsm_UnitTest PRIVATE HSM_CONFIG)
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../../CMake/hsm_config.h.in"
+            "${CMAKE_CURRENT_BINARY_DIR}/hsm_config.h" )
+			
+
+# Setup compiler include path
+target_include_directories(fsm_UnitTest PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
+

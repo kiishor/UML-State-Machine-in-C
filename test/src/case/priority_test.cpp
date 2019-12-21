@@ -37,14 +37,14 @@ state_machine_result_t handler3(state_machine_t * const)
 
 state_machine_t machine1, machine2, machine3;
 
-state_machine_result_t triggerEvent(state_machine_t * const pstMachine)
+state_machine_result_t triggerEvent(state_machine_t * const)
 {
-  machine1.Event = 1;
+   machine1.Event = 1;
   machine3.Event = 1;
   return EVENT_HANDLED;
 }
 
-state_machine_result_t selfTrigger(state_machine_t * const pstMachine)
+state_machine_result_t selfTrigger(state_machine_t * const)
 {
   machine2.Event = 1;
   return TRIGGERED_TO_SELF;
