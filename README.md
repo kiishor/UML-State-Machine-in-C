@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/kiishor/UML-State-Machine-in-C.svg?branch=master)](https://travis-ci.com/kiishor/UML-State-Machine-in-C)
+
 UML State Machine in C
 ======================
 
