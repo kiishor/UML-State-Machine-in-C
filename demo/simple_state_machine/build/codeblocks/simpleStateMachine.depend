@@ -108,7 +108,6 @@
 1546522424 e:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\build\hsm_config.h
 
 1548775006 source:e:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\main.c
-
 	<stdint.h>
 	<stdio.h>
 	<pthread.h>
@@ -120,7 +119,34 @@
 1548774528 e:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\process.h
 
 1548775080 source:e:\bala\project\uml-state-machine-in-c\demo\simple_state_machine\src\process.c
+	<stdint.h>
+	<stdio.h>
+	"hsm.h"
+	"process.h"
 
+1576508940 source:c:\project\uml-state-machine-in-c\src\hsm.c
+	<stdint.h>
+	<stdbool.h>
+	<stdio.h>
+	"hsm.h"
+
+1577004482 c:\project\uml-state-machine-in-c\src\hsm.h
+	"hsm_config.h"
+
+1572249556 c:\project\uml-state-machine-in-c\demo\simple_state_machine\build\hsm_config.h
+
+1576908502 source:c:\project\uml-state-machine-in-c\demo\simple_state_machine\src\main.c
+	<stdint.h>
+	<stdio.h>
+	<pthread.h>
+	<unistd.h>
+	<semaphore.h>
+	"hsm.h"
+	"process.h"
+
+1577004545 c:\project\uml-state-machine-in-c\demo\simple_state_machine\src\process.h
+
+1576908502 source:c:\project\uml-state-machine-in-c\demo\simple_state_machine\src\process.c
 	<stdint.h>
 	<stdio.h>
 	"hsm.h"

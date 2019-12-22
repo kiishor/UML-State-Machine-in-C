@@ -36,7 +36,7 @@ typedef enum
 //! process state machine
 typedef struct
 {
-  state_machine_t;      //!< Abstract state machine
+  state_machine_t Machine;      //!< Abstract state machine
   uint32_t Set_Time;    //! Set time of a process
   uint32_t Resume_Time; //!< Remaining time when the process is paused
   uint32_t Timer;       //!< Process timer
@@ -56,27 +56,27 @@ extern void init_process(process_t* const pProcess, uint32_t processTime);
 
 static inline void start_process(process_t* const pProcess)
 {
-  pProcess->Event = START;
+  pProcess->Machine.Event = START;
 }
 
 static inline void stop_process(process_t* const pProcess)
 {
-  pProcess->Event = STOP;
+  pProcess->Machine.Event = STOP;
 }
 
 static inline void pause_process(process_t* const pProcess)
 {
-  pProcess->Event = PAUSE;
+  pProcess->Machine.Event = PAUSE;
 }
 
 static inline void resume_process(process_t* const pProcess)
 {
-  pProcess->Event = RESUME;
+  pProcess->Machine.Event = RESUME;
 }
 
 static inline void on_process_timedout(process_t* const pProcess)
 {
-  pProcess->Event = TIMEOUT;
+  pProcess->Machine.Event = TIMEOUT;
 }
 
 /** \brief Parses the user keyboard input and calls the respective API,

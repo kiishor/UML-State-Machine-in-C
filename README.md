@@ -213,20 +213,6 @@ By default, framework uses variable length array implementation.
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 ```
 
-### Suppress anonymous structures
-
-The framework uses anonymous structure in `hierarchical_state_t` structure in hsm.h.
-If the compiler doesn't support this feature, it can be disabled by setting `HSM_USE_UNNAMED_STRUCT` to 0.
-
-By default, framework uses anonymous structure.
-
-```C
-// 0: disable anonymous structure in hsm.h
-// 1: Uses anonymous structure in hsm.h
-#define HSM_USE_UNNAMED_STRUCT 1
-```
-
-
 State machine logging
 ---------------------
 

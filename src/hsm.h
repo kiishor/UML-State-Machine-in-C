@@ -32,10 +32,6 @@
 #define STATE_MACHINE_LOGGER     0        //!< Disable the logging of state machine
 #endif // STATE_MACHINE_LOGGER
 
-#ifndef HSM_USE_UNNAMED_STRUCT
-#define HSM_USE_UNNAMED_STRUCT 1
-#endif
-
 #ifndef HSM_USE_VARIABLE_LENGTH_ARRAY
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 #endif
@@ -58,9 +54,9 @@ typedef enum
  */
 
 #if HIERARCHICAL_STATES
-typedef struct hierarchical_state_t state_t;
+typedef struct hierarchical_state state_t;
 #else
-typedef struct finite_state_t state_t;
+typedef struct finite_state state_t;
 #endif // HIERARCHICAL_STATES
 
 typedef struct state_machine_t state_machine_t;
@@ -69,7 +65,7 @@ typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t stat
 typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
 
 //! finite state structure
-typedef struct finite_state_t{
+struct finite_state{
   state_handler Handler;      //!< State handler function
   state_handler Entry;        //!< Entry action for state
   state_handler Exit;          //!< Exit action for state.
@@ -77,23 +73,10 @@ typedef struct finite_state_t{
 #if STATE_MACHINE_LOGGER
   uint32_t Id;              //!< unique identifier of state within the single state machine
 #endif
-}finite_state_t;
+};
 
-#if (!defined(__cplusplus) && (HSM_USE_UNNAMED_STRUCT == 1))
 //! Hierarchical state structure
-typedef struct hierarchical_state_t
-{
-  finite_state_t;
-
-  const state_t* const Parent;    //!< Parent state of the current state.
-  const state_t* const Node;       //!< Child states of the current state.
-  uint32_t Level;            //!< Hierarchy level from the top state.
-}hierarchical_state_t;
-
-#else
-// C++ doesn't support unnamed structure
-//! Hierarchical state structure
-typedef struct hierarchical_state_t
+struct hierarchical_state
 {
   state_handler Handler;      //!< State handler function
   state_handler Entry;        //!< Entry action for state
@@ -106,9 +89,7 @@ typedef struct hierarchical_state_t
   const state_t* const Parent;    //!< Parent state of the current state.
   const state_t* const Node;       //!< Child states of the current state.
   uint32_t Level;            //!< Hierarchy level from the top state.
-}hierarchical_state_t;
-
-#endif // __cplusplus
+};
 
 //! Abstract state machine structure
 struct state_machine_t
