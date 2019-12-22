@@ -15,8 +15,6 @@ addons:
 script:
   - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .  
   - cmake --build .
-  - cd ${TRAVIS_BUILD_DIR}
-  - ls
   - ./test/fsm_test/fsm_UnitTest
-  - ./test/fsm_test/hsm_UnitTest
+  - ./test/hsm_test/hsm_UnitTest
  
