@@ -13,10 +13,6 @@ addons:
       - cmake
 
 script:
-  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
-  - cd test/fsm_test
-  - cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
-  - ls
-  - cat hsm_config.h
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .  
   - cmake --build .
  
