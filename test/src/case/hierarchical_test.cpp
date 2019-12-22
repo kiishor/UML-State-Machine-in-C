@@ -34,8 +34,8 @@ state_machine_result_t handler3(state_machine_t * const)
   return EVENT_HANDLED;
 }
 
-extern const hierarchical_state_t childHSM[1];
-const hierarchical_state_t rootHSM =
+extern const state_t childHSM[1];
+const state_t rootHSM =
 {
   handler1,
   NULL,
@@ -45,7 +45,7 @@ const hierarchical_state_t rootHSM =
   0
 };
 
-const hierarchical_state_t childHSM[1] =
+const state_t childHSM[1] =
 {
   {
     handler2,
@@ -57,7 +57,7 @@ const hierarchical_state_t childHSM[1] =
   }
 };
 
-const hierarchical_state_t child1HSM[1] =
+const state_t child1HSM[1] =
 {
   {
     handler3,

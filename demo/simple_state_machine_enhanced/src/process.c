@@ -81,8 +81,8 @@ static const state_t Process_States[] =
 
 void init_process(process_t* const pProcess, uint32_t processTime)
 {
-  pProcess->State = &Process_States[IDLE_STATE];
-  pProcess->Event = 0;
+  pProcess->Machine.State = &Process_States[IDLE_STATE];
+  pProcess->Machine.Event = 0;
   pProcess->Set_Time = processTime;
   pProcess->Resume_Time = 0;
 

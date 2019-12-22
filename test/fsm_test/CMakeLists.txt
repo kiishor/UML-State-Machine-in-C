@@ -57,8 +57,6 @@ set(HIERARCHICAL_STATES 0)
 add_executable(fsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
 add_test(fsm_UnitTest fsm_UnitTest)
 
-set(HSM_USE_UNNAMED_STRUCT 0)
-
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
     target_compile_options( fsm_UnitTest PRIVATE -Werror )

@@ -111,13 +111,13 @@ state_machine_result_t level3_child4_exit_handler(state_machine_t * const)
   return EVENT_HANDLED;
 }
 
-extern const hierarchical_state_t Level2_Child1_HSM[];
-extern const hierarchical_state_t Level2_Child3_HSM[];
-extern const hierarchical_state_t Level3_Child1_HSM[];
-extern const hierarchical_state_t Level3_Child3_HSM[];
-extern const hierarchical_state_t Level3_Child4_HSM[];
+extern const state_t Level2_Child1_HSM[];
+extern const state_t Level2_Child3_HSM[];
+extern const state_t Level3_Child1_HSM[];
+extern const state_t Level3_Child3_HSM[];
+extern const state_t Level3_Child4_HSM[];
 
-const hierarchical_state_t Level1_HSM[] =
+const state_t Level1_HSM[] =
 {
   {
     NULL,
@@ -145,7 +145,7 @@ const hierarchical_state_t Level1_HSM[] =
   }
 };
 
-const hierarchical_state_t Level2_Child1_HSM[] =
+const state_t Level2_Child1_HSM[] =
 {
   {
     NULL,
@@ -165,7 +165,7 @@ const hierarchical_state_t Level2_Child1_HSM[] =
   },
 };
 
-const hierarchical_state_t Level2_Child3_HSM[] =
+const state_t Level2_Child3_HSM[] =
 {
   {
     NULL,
@@ -185,7 +185,7 @@ const hierarchical_state_t Level2_Child3_HSM[] =
   },
 };
 
-const hierarchical_state_t Level3_Child1_HSM[] =
+const state_t Level3_Child1_HSM[] =
 {
   {
     NULL,
@@ -205,7 +205,7 @@ const hierarchical_state_t Level3_Child1_HSM[] =
   },
 };
 
-const hierarchical_state_t Level3_Child3_HSM[] =
+const state_t Level3_Child3_HSM[] =
 {
   {
     NULL,
@@ -217,7 +217,7 @@ const hierarchical_state_t Level3_Child3_HSM[] =
   }
 };
 
-const hierarchical_state_t Level3_Child4_HSM[] =
+const state_t Level3_Child4_HSM[] =
 {
   {
     NULL,

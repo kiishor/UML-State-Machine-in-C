@@ -36,14 +36,26 @@ include_directories(
 					)
 
 
-set(CMAKE_CXX_STANDARD 14)
+set(CPP_VERSION 11)
+if ("cxx_std_14" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+	set(CPP_VERSION 14)
+endif()
+
+message("Your compiler supports : cpp${CPP_VERSION}")
+set(CMAKE_CXX_STANDARD ${CPP_VERSION})
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_STANDARD 11)
+set(C_VERSION 99)
+if ("c_std_11" IN_LIST CMAKE_C_COMPILE_FEATURES)
+	set(C_VERSION 11)
+endif()
+
+set(CMAKE_C_STANDARD ${C_VERSION})
 set(CMAKE_C_STANDARD_REQUIRED ON)
+message("Your compiler supports : c${C_VERSION}")
 
 set(HIERARCHICAL_STATES 1)
-set(HSM_USE_UNNAMED_STRUCT 0)
 
 add_executable(hsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
 add_test(hsm_UnitTest hsm_UnitTest)
