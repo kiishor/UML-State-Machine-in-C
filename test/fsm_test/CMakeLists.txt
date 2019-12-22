@@ -33,23 +33,35 @@ include_directories(
 						${TARGET_DIR}
 					)
 
+set(CPP_VERSION 11)
+if ("cxx_std_14" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+	set(CPP_VERSION 14)
+endif()
 
-set(CMAKE_CXX_STANDARD 14)
+message("Your compiler supports : cpp${CPP_VERSION}")
+set(CMAKE_CXX_STANDARD ${CPP_VERSION})
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_STANDARD 11)
+set(C_VERSION 99)
+if ("c_std_11" IN_LIST CMAKE_C_COMPILE_FEATURES)
+	set(C_VERSION 11)
+endif()
+
+set(CMAKE_C_STANDARD ${C_VERSION})
 set(CMAKE_C_STANDARD_REQUIRED ON)
+message("Your compiler supports : c${C_VERSION}")
 
 set(HIERARCHICAL_STATES 0)
 
 add_executable(fsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
 add_test(fsm_UnitTest fsm_UnitTest)
 
+set(HSM_USE_UNNAMED_STRUCT 0)
 
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
     target_compile_options( fsm_UnitTest PRIVATE -Werror )
-	set(HSM_USE_UNNAMED_STRUCT 1)
 endif()
 
 # Clang specific options go here
@@ -61,7 +73,6 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
     STRING(REGEX REPLACE "/W[0-9]" "/W4" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) # override default warning level
     target_compile_options( fsm_UnitTest PRIVATE /w44265 /w44061 /w44062 /w45038 )
     target_compile_options( fsm_UnitTest PRIVATE /WX)
-	set(HSM_USE_UNNAMED_STRUCT 0)
 endif()
 
 target_compile_definitions(fsm_UnitTest PRIVATE HSM_CONFIG)
