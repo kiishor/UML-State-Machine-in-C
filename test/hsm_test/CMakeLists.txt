@@ -56,6 +56,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 message("Your compiler supports : c${C_VERSION}")
 
 set(HIERARCHICAL_STATES 1)
+SET(COVERAGE OFF CACHE BOOL "Coverage")
 
 add_executable(hsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HEADER_FILES})
 add_test(hsm_UnitTest hsm_UnitTest)
@@ -65,6 +66,10 @@ if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( hsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
     target_compile_options( hsm_UnitTest PRIVATE -Werror )
 	set(HSM_USE_VARIABLE_LENGTH_ARRAY 1)
+    if (COVERAGE)
+        target_compile_options(hsm_UnitTest PRIVATE --coverage)
+        target_link_libraries(hsm_UnitTest PRIVATE --coverage)
+    endif()
 endif()
 
 # Clang specific options go here
