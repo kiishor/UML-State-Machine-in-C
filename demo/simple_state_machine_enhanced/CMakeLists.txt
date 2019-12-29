@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project("simple_state_machine_enhanced")
+project("simple_state_machine_enhanced" C)
 
 # Setup path for source dir
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -36,11 +36,12 @@ message("Your compiler supports : c${C_VERSION}")
 
 set(HIERARCHICAL_STATES 0)
 set(STATE_MACHINE_LOGGER 1)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
 
 add_executable(simple_state_machine_enhanced ${DEMO_FILES} ${TARGET_FILES} ${HEADER_FILES})
 
 if ( CMAKE_C_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( simple_state_machine_enhanced PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic -pthread)
+    target_compile_options( simple_state_machine_enhanced PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
     target_compile_options( simple_state_machine_enhanced PRIVATE -Werror )
 endif()
 
