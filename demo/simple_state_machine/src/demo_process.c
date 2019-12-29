@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 #include "hsm.h"
-#include "process.h"
+#include "demo_process.h"
 
 /*
  *  --------------------- ENUMERATION ---------------------
@@ -55,20 +55,26 @@ static state_machine_result_t paused_exit_handler(state_machine_t* const State);
 
 static const state_t Process_States[] =
 {
-  [IDLE_STATE].Handler = idle_handler,
-  [IDLE_STATE].Entry   = idle_entry_handler,
-  [IDLE_STATE].Exit    = idle_exit_handler,
-  [IDLE_STATE].Id      = IDLE_STATE,
+  [IDLE_STATE] = {
+    .Handler = idle_handler,
+    .Entry   = idle_entry_handler,
+    .Exit    = idle_exit_handler,
+    .Id      = IDLE_STATE,
+  },
 
-  [ACTIVE_STATE].Handler = active_handler,
-  [ACTIVE_STATE].Entry   = active_entry_handler,
-  [ACTIVE_STATE].Exit    = active_exit_handler,
-  [ACTIVE_STATE].Id       = ACTIVE_STATE,
+  [ACTIVE_STATE] = {
+    .Handler = active_handler,
+    .Entry   = active_entry_handler,
+    .Exit    = active_exit_handler,
+    .Id      = ACTIVE_STATE,
+  },
 
-  [PAUSE_STATE].Handler = paused_handler,
-  [PAUSE_STATE].Entry   = paused_entry_handler,
-  [PAUSE_STATE].Exit     = paused_exit_handler,
-  [PAUSE_STATE].Id      = PAUSE_STATE,
+  [PAUSE_STATE] = {
+    .Handler = paused_handler,
+    .Entry   = paused_entry_handler,
+    .Exit     = paused_exit_handler,
+    .Id      = PAUSE_STATE,
+  }
 };
 
 /*
@@ -119,6 +125,7 @@ static state_machine_result_t idle_exit_handler(state_machine_t* const pState)
 
 static state_machine_result_t active_entry_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Entering to active state\n");
   printf("Supported events\n");
   printf("'q' : stop process\n");
@@ -147,6 +154,7 @@ static state_machine_result_t active_handler(state_machine_t* const pState)
 
 static state_machine_result_t active_exit_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Exiting from Active state\n");
   return EVENT_HANDLED;
 }
@@ -184,6 +192,7 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
 
 static state_machine_result_t paused_exit_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Exiting from paused state\n");
   return EVENT_HANDLED;
 }

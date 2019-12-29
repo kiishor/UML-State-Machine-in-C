@@ -1,5 +1,5 @@
-#ifndef PROCESS_H
-#define PROCESS_H
+#ifndef DEMO_PROCESS_H
+#define DEMO_PROCESS_H
 
 /**
  * \file
@@ -116,4 +116,4 @@ static inline void parse_cli(process_t* const pProcess, char input)
   }
 }
 
-#endif // PROCESS_H
+#endif // DEMO_PROCESS_H

@@ -62,7 +62,7 @@ add_test(hsm_UnitTest hsm_UnitTest)
 
 
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( hsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
+    target_compile_options( hsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic -Wmissing-declarations)
     target_compile_options( hsm_UnitTest PRIVATE -Werror )
 	set(HSM_USE_VARIABLE_LENGTH_ARRAY 1)
 endif()

@@ -22,7 +22,7 @@
 #include <semaphore.h>
 
 #include "hsm.h"
-#include "process.h"
+#include "demo_process.h"
 
 /*
  *  --------------------- Global variables ---------------------
@@ -61,6 +61,7 @@ void result_logger(uint32_t state, state_machine_result_t result)
  */
 void* timer(void* vargp)
 {
+  (void)(vargp);
     while(1)
     {
       sleep(1);
@@ -89,6 +90,7 @@ void* timer(void* vargp)
  */
 void* console(void* vargp)
 {
+  (void)(vargp);
   while(1)
   {
     // Get input from console

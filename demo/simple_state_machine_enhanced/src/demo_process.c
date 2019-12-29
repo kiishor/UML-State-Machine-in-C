@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 #include "hsm.h"
-#include "process.h"
+#include "demo_process.h"
 
 /*
  *  --------------------- DEFINITION ---------------------
@@ -63,10 +63,12 @@ static state_machine_result_t paused_exit_handler(state_machine_t* const State);
  */
 
 #define ADD_STATE(name, state_handler, entry_handler, exit_handler) \
-[name].Handler = state_handler, \
-[name].Entry   = entry_handler, \
-[name].Exit    = exit_handler,  \
-[name].Id      = name,
+[name] = {                  \
+  .Handler = state_handler, \
+  .Entry   = entry_handler, \
+  .Exit    = exit_handler,  \
+  .Id      = name,          \
+},
 
 static const state_t Process_States[] =
 {
@@ -123,6 +125,7 @@ static state_machine_result_t idle_exit_handler(state_machine_t* const pState)
 
 static state_machine_result_t active_entry_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Entering to active state\n");
   printf("Supported events\n");
   printf("'q' : stop process\n");
@@ -151,6 +154,7 @@ static state_machine_result_t active_handler(state_machine_t* const pState)
 
 static state_machine_result_t active_exit_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Exiting from Active state\n");
   return EVENT_HANDLED;
 }
@@ -188,6 +192,7 @@ static state_machine_result_t paused_handler(state_machine_t* const pState)
 
 static state_machine_result_t paused_exit_handler(state_machine_t* const pState)
 {
+  (void)(pState);
   printf("Exiting from paused state\n");
   return EVENT_HANDLED;
 }
