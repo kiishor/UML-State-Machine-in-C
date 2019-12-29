@@ -1,4 +1,4 @@
-cd test/hsm_test
+cd ../test/hsm_test
 md build
 cd build
 del /s/q MinGW
