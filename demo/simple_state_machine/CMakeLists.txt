@@ -40,7 +40,7 @@ set(STATE_MACHINE_LOGGER 1)
 add_executable(simple_state_machine ${DEMO_FILES} ${TARGET_FILES} ${HEADER_FILES})
 
 if ( CMAKE_C_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( simple_state_machine PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic -pthread)
+    target_compile_options( simple_state_machine PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic -lrt)
     target_compile_options( simple_state_machine PRIVATE -Werror )
 endif()
 
