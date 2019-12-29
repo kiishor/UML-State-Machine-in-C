@@ -7,14 +7,20 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-5.0
     packages:
       - gcc-7
       - g++-7
       - cmake
 
+before_install:
+  - pip install --user cpp-coveralls
+  
 script:
-  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake -DCOVERAGE=1 .
   - cmake --build .
   - ./test/fsm_test/fsm_UnitTest
   - ./test/hsm_test/hsm_UnitTest
  
+after_success:
+  - coveralls --root . -E ".*CMakeFiles.*" 
