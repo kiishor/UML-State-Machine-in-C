@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/kiishor/UML-State-Machine-in-C.svg?branch=master)](https://travis-ci.com/kiishor/UML-State-Machine-in-C)
+[![Coverage Status](https://coveralls.io/repos/github/kiishor/UML-State-Machine-in-C/badge.svg?branch=master)](https://coveralls.io/github/kiishor/UML-State-Machine-in-C?branch=master)
 
 UML State Machine in C
 ======================
