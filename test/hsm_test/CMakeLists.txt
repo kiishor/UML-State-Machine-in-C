@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project("hsm_UnitTest" C++)
+project("hsm_UnitTest")
 
 # Setup path for testcase dir
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../src)

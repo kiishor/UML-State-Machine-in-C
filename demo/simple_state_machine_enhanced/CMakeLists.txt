@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project("simple_state_machine_enhanced" C)
+project("simple_state_machine_enhanced")
 
 # Setup path for source dir
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
