@@ -29,6 +29,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
 			<Add option="-std=c11" />
 			<Add option="-DHSM_CONFIG" />
@@ -40,18 +41,15 @@
 		</Unit>
 		<Unit filename="../../../../src/hsm.h" />
 		<Unit filename="../../readme.md" />
+		<Unit filename="../../src/demo_process.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/demo_process.h" />
 		<Unit filename="../../src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../src/process.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/process.h" />
 		<Unit filename="../hsm_config.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

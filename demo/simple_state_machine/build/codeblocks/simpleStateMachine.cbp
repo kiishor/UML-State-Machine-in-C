@@ -29,6 +29,18 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wshadow" />
+			<Add option="-Wredundant-decls" />
+			<Add option="-Wcast-align" />
+			<Add option="-Wundef" />
+			<Add option="-Wfloat-equal" />
+			<Add option="-Wunreachable-code" />
+			<Add option="-Wmissing-include-dirs" />
+			<Add option="-Wswitch-default" />
+			<Add option="-Wmain" />
+			<Add option="-pedantic-errors" />
+			<Add option="-pedantic" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
 			<Add option="-std=c11" />
 			<Add option="-DHSM_CONFIG" />
@@ -40,19 +52,16 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../../../src/hsm.h" />
-		<Unit filename="../../readme.md" />		
+		<Unit filename="../../readme.md" />
+		<Unit filename="../../src/demo_process.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/demo_process.h" />
 		<Unit filename="../../src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../src/process.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/process.h" />
 		<Unit filename="../hsm_config.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

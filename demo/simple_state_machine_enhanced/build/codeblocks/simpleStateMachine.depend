@@ -122,19 +122,19 @@
 	<stdio.h>
 	"hsm.h"
 
-1577004482 c:\project\uml-state-machine-in-c\src\hsm.h
+1577012586 c:\project\uml-state-machine-in-c\src\hsm.h
 	"hsm_config.h"
 
 1574573325 c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\build\hsm_config.h
 
-1574573325 source:c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\src\main.c
+1577598604 source:c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\src\main.c
 	<stdint.h>
 	<stdio.h>
 	<pthread.h>
 	<unistd.h>
 	<semaphore.h>
 	"hsm.h"
-	"process.h"
+	"demo_process.h"
 
 1577004702 c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\src\process.h
 
@@ -143,4 +143,12 @@
 	<stdio.h>
 	"hsm.h"
 	"process.h"
+
+1577598536 source:c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\src\demo_process.c
+	<stdint.h>
+	<stdio.h>
+	"hsm.h"
+	"demo_process.h"
+
+1577598617 c:\project\uml-state-machine-in-c\demo\simple_state_machine_enhanced\src\demo_process.h
 

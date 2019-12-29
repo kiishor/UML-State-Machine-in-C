@@ -58,7 +58,7 @@ add_executable(fsm_UnitTest ${TEST_FILES} ${TARGET_FILES} ${TESTCASE_FILES} ${HE
 add_test(fsm_UnitTest fsm_UnitTest)
 
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic )
+    target_compile_options( fsm_UnitTest PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
     target_compile_options( fsm_UnitTest PRIVATE -Werror )
 endif()
 
