@@ -25,11 +25,8 @@ state_machine_result_t handler1Entry(state_machine_t* const)
   return EVENT_HANDLED;
 }
 
-state_machine_result_t handler1Exit(state_machine_t* const pState)
+state_machine_result_t handler1Exit(state_machine_t* const)
 {
-    (void)(pState);
-    std::cout << "Exit handler" << std::endl;
-
   return EVENT_HANDLED;
 }
 
