@@ -23,4 +23,4 @@ script:
   - ./test/hsm_test/hsm_UnitTest
  
 after_success:
-  - coveralls --root . --exclude demo --exclude test\src -E ".*CMakeFiles.*" -E ".*catch.*" -E ".*hippomocks.*" 
+  - coveralls --root . --exclude demo -E ".*CMakeFiles.*" -E ".*catch.*" -E ".*hippomocks.*" 
