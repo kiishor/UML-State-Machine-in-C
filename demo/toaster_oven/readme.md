@@ -5,26 +5,29 @@ This example demonstrate a hierarchical state machine of a toaster oven as shown
 
 ![Toaster oven: Hierarchical state machine](docs/Toaster_oven.svg)
 
-### The oven has two states
-1. Door Close state
-  This state contains one more state machine. This state machien has two states.
-  a. Off state
-    This state waits for two events,
-    - **Start** : This event turn on the heater and heating timer.
-      It also triggers the state transision to On state.
+### Door Close state
+  This is a composite state and contains two substates.
+  - **Entry action**: Turn off the oven lamp.
+
+#### Off state
+    This state represnt that oven is off. Supported events are events are,
+    - **Start**     : This event turn on the heater and heating timer.
+                      It also triggers the state transision to On state.
     - **Door_Open** : This event turns off the heater and pauses the heating timer.
-      It also triggers the state transision to Door open state.
+                      It also triggers the state transision to Door open state.
 
-  b. On state
-    This state waits for following events,
-    - **Stop** : This event turn off the heater and heating timer.
-    It also triggers the state transition to off state.
-    - **TimeOut** : This event turn off the heater and triggers the state transition to off state.
-    - **Door_Open** : This event triggers the state transition to Door open state.
+#### On state
+    This state represents oven is on (i.e. heater is on and timer is running).
+    - **Entry action**: Turn on the heater.
+    - **Exit action** : Turn off the heater.
+    - **Stop**        : This event turn off the heater and heating timer.
+                        It also triggers the state transition to off state.
+    - **TimeOut**     : This event turn off the heater and triggers the state transition to off state.
+    - **Door_Open**   : This event pauses the triggers the state transition to Door open state.
 
-2. Door Open state
+### Door Open state
 This state supports **Door_Close** event.
-  - **Door_CLose** : This event triggers the state transition based on the resume timer.
+  - **Door_Close** : This event triggers the state transition based on the resume timer.
     If resume time is greater than zero then it traverse to on state else it to off state.
 
 ### Total supported events are,
@@ -34,8 +37,8 @@ This state supports **Door_Close** event.
 4. Door_Close
 5. Timeout
 
-How to use framework
---------------------
+##How to use framework
+
 toaster_oven.c and toaster_oven.h files contains an implementation of oven state machine.
 
 ### List of supported events
