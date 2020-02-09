@@ -3,3 +3,4 @@ project("demo")
 
 add_subdirectory(simple_state_machine)
 add_subdirectory(simple_state_machine_enhanced)
+add_subdirectory(toaster_oven)

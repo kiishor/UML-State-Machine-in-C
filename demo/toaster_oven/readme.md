@@ -1,43 +1,46 @@
 Toaster Oven state machine
 ==========================
 
+## State diagram
 This example demonstrate a hierarchical state machine of a toaster oven as shown below.
 
 ![Toaster oven: Hierarchical state machine](docs/Toaster_oven.svg)
 
-### Door Close state
-  This is a composite state and contains two substates.
-  - **Entry action**: Turn off the oven lamp.
+## States
+### 1. Door Close state
+This is a composite state and contains two substates.
+- **Entry action**: Turn off the oven lamp.
 
-#### Off state
-    This state represnt that oven is off. Supported events are events are,
-    - **Start**     : This event turn on the heater and heating timer.
-                      It also triggers the state transision to On state.
-    - **Door_Open** : This event turns off the heater and pauses the heating timer.
-                      It also triggers the state transision to Door open state.
+#### a. Off state
+This state represnt that oven is off. Supported events are events are,
+- **Start**     : This event turn on the heater and heating timer.
+                  It also triggers the state transision to On state.
+- **Door_Open** : This event turns off the heater and pauses the heating timer.
+                  It also triggers the state transision to Door open state.
 
-#### On state
-    This state represents oven is on (i.e. heater is on and timer is running).
-    - **Entry action**: Turn on the heater.
-    - **Exit action** : Turn off the heater.
-    - **Stop**        : This event turn off the heater and heating timer.
-                        It also triggers the state transition to off state.
-    - **TimeOut**     : This event turn off the heater and triggers the state transition to off state.
-    - **Door_Open**   : This event pauses the triggers the state transition to Door open state.
+#### b. On state
+This state represents oven is on (i.e. heater is on and timer is running).
+- **Entry action**: Turn on the heater.
+- **Exit action** : Turn off the heater.
+- **Stop**        : This event turn off the heater and heating timer.
+                    It also triggers the state transition to off state.
+- **TimeOut**     : This event turn off the heater and triggers the state transition to off state.
+- **Door_Open**   : This event pauses the triggers the state transition to Door open state.
 
-### Door Open state
+### 2. Door Open state
 This state supports **Door_Close** event.
-  - **Door_Close** : This event triggers the state transition based on the resume timer.
-    If resume time is greater than zero then it traverse to on state else it to off state.
+- **Entry action**: Turn on the oven lamp.
+- **Door_Close**  : This event triggers the state transition based on the resume timer.
+                   If resume time is greater than zero then it traverse to on state else it to off state.
 
-### Total supported events are,
+## Total supported events are,
 1. Start
 2. Stop
 3. Door_Open
 4. Door_Close
 5. Timeout
 
-##How to use framework
+## How to use framework
 
 toaster_oven.c and toaster_oven.h files contains an implementation of oven state machine.
 
@@ -87,20 +90,29 @@ state_t in the hierarchical state machine contains extra three members compared 
 This demo uses macro to define the states. These macro makes code more readable and maintainable
 and also reduces manual hardcoding of data.
 
-```C #define ADD_ROOT(NAME, HANDLER, ENTRY, EXIT, CHILD) ```
+```C
+#define ADD_ROOT(NAME, HANDLER, ENTRY, EXIT, CHILD)
+```
 Use this macro to add root state to the state machine. `DOOR_CLOSE_STATE` is defined using this macro.
   - This state doesn't contain parent state.
   - Level is zero
   - It is composit state and contains substates.
+---
 
-```C #define ADD_ROOT_LEAF(NAME, HANDLER, ENTRY, EXIT) ```
+```C
+#define ADD_ROOT_LEAF(NAME, HANDLER, ENTRY, EXIT)
+```
   - This state doesn't contain parent state. `ADD_ROOT_LEAF` is defined using this macro.
   - Level is zero
   - It is a simple state and doesn't contains substates.
+---
 
-```C #define ADD_LEAF(NAME, HANDLER, ENTRY, EXIT, PARENT, LEVEL) ```
+```C
+#define ADD_LEAF(NAME, HANDLER, ENTRY, EXIT, PARENT, LEVEL)
+```
 Use this macro to add leaf state to the composite state. `OFF_STATE` and `ON_STATE` are defined using this macro.
   - It is a simple state and doesn't contains substates.
+---
 
 ```C
 #define ALL_OVEN_STATES	\
