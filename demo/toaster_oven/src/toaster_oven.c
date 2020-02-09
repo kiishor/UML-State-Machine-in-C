@@ -53,6 +53,7 @@ typedef enum
 typedef enum
 {
   ALL_DOOR_CLOSED_STATES(,)
+  TOTAL_DOOR_CLOSED_STATES
 }door_close_state_t;
 
 #undef ADD_NODE
@@ -104,7 +105,7 @@ static state_machine_result_t on_exit_handler(state_machine_t* const pState);
     .Parent   = PARENT,                   \
 	},
 
-static const state_t Door_Close_State[];
+static const state_t Door_Close_State[TOTAL_DOOR_CLOSED_STATES];
 
 //! List of all the states
 static const state_t Oven_State[] =
@@ -112,7 +113,7 @@ static const state_t Oven_State[] =
   ALL_OVEN_STATES
 };
 
-static const state_t Door_Close_State[] =
+static const state_t Door_Close_State[TOTAL_DOOR_CLOSED_STATES] =
 {
 	ALL_DOOR_CLOSED_STATES(&Oven_State[DOOR_CLOSE_STATE], 1)
 };
@@ -207,6 +208,7 @@ static state_machine_result_t off_handler(state_machine_t* const pState)
 
 static state_machine_result_t off_entry_handler(state_machine_t* const pState)
 {
+  void(pState);
   printf("Press 's': to turn on Oven\n");
   printf("Press 'o': to open the door\n");
   return EVENT_HANDLED;

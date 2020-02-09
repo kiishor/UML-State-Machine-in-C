@@ -2,7 +2,7 @@ Toaster Oven state machine
 ==========================
 
 ## State diagram
-This example demonstrate a hierarchical state machine of a toaster oven as shown below.
+This example demonstrates a hierarchical state machine of a toaster oven as shown below.
 
 ![Toaster oven: Hierarchical state machine](docs/Toaster_oven.svg)
 
@@ -12,26 +12,26 @@ This is a composite state and contains two substates.
 - **Entry action**: Turn off the oven lamp.
 
 #### a. Off state
-This state represnt that oven is off. Supported events are events are,
+This state represents that oven is off. Supported events are events are,
 - **Start**     : This event turn on the heater and heating timer.
-                  It also triggers the state transision to On state.
+                  It also triggers the state transition to On state.
 - **Door_Open** : This event turns off the heater and pauses the heating timer.
-                  It also triggers the state transision to Door open state.
+                  It also triggers the state transition to Door open state.
 
 #### b. On state
 This state represents oven is on (i.e. heater is on and timer is running).
 - **Entry action**: Turn on the heater.
 - **Exit action** : Turn off the heater.
-- **Stop**        : This event turn off the heater and heating timer.
+- **Stop**        : This event turns off the heater and heating timer.
                     It also triggers the state transition to off state.
-- **TimeOut**     : This event turn off the heater and triggers the state transition to off state.
+- **TimeOut**     : This event turns off the heater and triggers the state transition to off state.
 - **Door_Open**   : This event pauses the triggers the state transition to Door open state.
 
 ### 2. Door Open state
 This state supports **Door_Close** event.
 - **Entry action**: Turn on the oven lamp.
 - **Door_Close**  : This event triggers the state transition based on the resume timer.
-                   If resume time is greater than zero then it traverse to on state else it to off state.
+                   If resume time is greater than zero then it traverses to on state else it to off state.
 
 ## Supported events
 1. Start
@@ -42,11 +42,11 @@ This state supports **Door_Close** event.
 
 ## How to use framework
 
-toaster_oven.c and toaster_oven.h files contains an implementation of oven state machine.
+toaster_oven.c and toaster_oven.h files contain an implementation of oven state machine.
 
 ### List of supported events
 
-Define the list of supported events as enumeration in the header file of your state machine `toaster_oven.h`.
+Define the list of supported events as an enumeration in the header file of your state machine `toaster_oven.h`.
 event value must be non-zero. Hence initialize the first enum value to 1.
 ```C
 //! List of oven events
@@ -80,14 +80,14 @@ Make sure that `state_machine_t` must be the first element in the derived struct
 
 ### state
 
-state_t in the hierarchical state machine contains extra three members compared to finite state machine.
+state_t in the hierarchical state machine contains an extra three members compared to finite state machine.
 ```C
   const state_t* const Parent;    //!< Parent state of the current state.
   const state_t* const Node;      //!< Child states of the current state.
   uint32_t Level;                 //!< Hierarchy level from the top state.
 ```
 
-This demo uses macro to define the states. These macro makes code more readable and maintainable
+This demo uses macro to define the states. This macro make code more readable and maintainable
 and also reduces manual hardcoding of data.
 
 ```C
@@ -96,7 +96,7 @@ and also reduces manual hardcoding of data.
 Use this macro to add root state to the state machine. `DOOR_CLOSE_STATE` is defined using this macro.
   - This state doesn't contain parent state.
   - Level is zero
-  - It is composit state and contains substates.
+  - It is composite state and contains substates.
 ---
 
 ```C
@@ -143,7 +143,7 @@ If handler supports the passed event, then it consumes the event and returns the
 Use `switch_state` to switch state when the source state and target state have same parent state.
 e.g. switch from `OFF_STATE` to `ON_STATE` and vice versa.
 
-Use `traverse_state` for travesing from source state to target state when the both have different parent state.
+Use `traverse_state` for traversing from source state to target state when both have different parent state.
 e.g. switch from `DOOR_OPEN_STATE` to `OFF_STATE` / `ON_STATE` and vice versa.
 
 If handler doesn't support the passed event then return result as `EVENT_UN_HANDLED`.
