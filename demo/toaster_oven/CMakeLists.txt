@@ -34,22 +34,16 @@ set(CMAKE_C_STANDARD ${C_VERSION})
 set(CMAKE_C_STANDARD_REQUIRED ON)
 message("Your compiler supports : c${C_VERSION}")
 
-set(HIERARCHICAL_STATES 0)
-set(STATE_MACHINE_LOGGER 1)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
 
-add_executable(simple_state_machine ${DEMO_FILES} ${TARGET_FILES} ${HEADER_FILES})
+add_executable(toaster_oven ${DEMO_FILES} ${TARGET_FILES} ${HEADER_FILES})
 
 if ( CMAKE_C_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( simple_state_machine PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
-    target_compile_options( simple_state_machine PRIVATE -Werror )
+    target_compile_options( toaster_oven PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
+    target_compile_options( toaster_oven PRIVATE -Werror )
 endif()
 
-target_compile_definitions(simple_state_machine PRIVATE HSM_CONFIG)
-configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/../../CMake/hsm_config.h.in"
-            "${CMAKE_CURRENT_BINARY_DIR}/hsm_config.h" )
-
 # Setup compiler include path
-target_include_directories(simple_state_machine PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(toaster_oven PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 

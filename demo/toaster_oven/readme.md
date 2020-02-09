@@ -33,7 +33,7 @@ This state supports **Door_Close** event.
 - **Door_Close**  : This event triggers the state transition based on the resume timer.
                    If resume time is greater than zero then it traverse to on state else it to off state.
 
-## Total supported events are,
+## Supported events
 1. Start
 2. Stop
 3. Door_Open
