@@ -208,7 +208,7 @@ static state_machine_result_t off_handler(state_machine_t* const pState)
 
 static state_machine_result_t off_entry_handler(state_machine_t* const pState)
 {
-  void(pState);
+  (void)(pState);
   printf("Press 's': to turn on Oven\n");
   printf("Press 'o': to open the door\n");
   return EVENT_HANDLED;
