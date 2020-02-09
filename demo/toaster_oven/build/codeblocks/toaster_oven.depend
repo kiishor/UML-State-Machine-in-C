@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1576508940 source:c:\project\uml-state-machine-in-c\src\hsm.c
+	<stdint.h>
+	<stdbool.h>
+	<stdio.h>
+	"hsm.h"
+
+1577012586 c:\project\uml-state-machine-in-c\src\hsm.h
+	"hsm_config.h"
+
+1581235125 c:\project\uml-state-machine-in-c\demo\toaster_oven\build\hsm_config.h
+
+1581258355 source:c:\project\uml-state-machine-in-c\demo\toaster_oven\src\main.c
+	<stdint.h>
+	<stdio.h>
+	<pthread.h>
+	<unistd.h>
+	<semaphore.h>
+	<stdbool.h>
+	"hsm.h"
+	"toaster_oven.h"
+
+1581236460 c:\project\uml-state-machine-in-c\demo\toaster_oven\src\toaster_oven.h
+
+1581260451 source:c:\project\uml-state-machine-in-c\demo\toaster_oven\src\toaster_oven.c
+	<stdint.h>
+	<stdio.h>
+	<stdbool.h>
+	"hsm.h"
+	"toaster_oven.h"
+
