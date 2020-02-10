@@ -101,6 +101,20 @@ typedef enum
         REQUIRE(machine.Event == 0);
       }
     }
+    WHEN("All the handler couldn't handle the event")
+    {
+      machine.Event = EN_EVENT1;
+      MockRepository mocks;
+      mocks.ExpectCallFunc(handler3).With(&machine).Return(EVENT_UN_HANDLED);
+      mocks.ExpectCallFunc(handler2).With(&machine).Return(EVENT_UN_HANDLED);
+      mocks.ExpectCallFunc(handler1).With(&machine).Return(EVENT_UN_HANDLED);
+
+      THEN( "Machine invokes the parent handler")
+      {
+        REQUIRE(dispatch_event(machineList, 1) == EVENT_UN_HANDLED);
+        REQUIRE(machine.Event == EN_EVENT1);
+      }
+    }
   }
 }
 
