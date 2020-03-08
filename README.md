@@ -241,8 +241,10 @@ Users can use this logging mechanism to also log the time consumed to handle the
 Start timer on `state_machine_event_logger` and stop on `state_machine_result_logger`.
 
 ### Demo
-[simple state machine](demo/simple_state_machine/readme.md)
-[simple state machine (enhanced)](demo/simple_state_machine_enhanced/readme.md)
+[simple state machine](demo/simple_state_machine/readme.md)  
+[simple state machine (enhanced)](demo/simple_state_machine_enhanced/readme.md)  
+[simple hierarchical state machine](demo/hierarchical_state_machine/readme.md)  
+[Toaster oven](demo/toaster_oven/readme.md)  
 
 ### Todo
 - Add more real world examples/demo's specially related to embedded systems
