@@ -46,8 +46,8 @@ static state_machine_result_t level3_state1_exit_handler(state_machine_t * const
  *  --------------------- Global variables ---------------------
  */
 
-static const state_t Level2_HSM[];
-static const state_t Level3_HSM[];
+static const state_t Level2_HSM[1];
+static const state_t Level3_HSM[1];
 
 // This is an array of root (top most) states .
 static const state_t Level1_HSM[] =
@@ -125,6 +125,7 @@ static state_machine_result_t level1_state1_handler(state_machine_t * const pSta
 
 static state_machine_result_t level1_state1_entry_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L1_S1: entry handler called\n");
   printf("\nState machine is in L1_S1 state\n");
   printf("Supported Events are\n");
@@ -134,6 +135,7 @@ static state_machine_result_t level1_state1_entry_handler(state_machine_t * cons
 
 static state_machine_result_t level1_state1_exit_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L1_S1: exit handler called\n");
   return EVENT_HANDLED;
 }
@@ -154,12 +156,14 @@ static state_machine_result_t level1_state2_handler(state_machine_t * const pSta
 
 static state_machine_result_t level1_state2_entry_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L1_S2: entry handler called\n");
   return EVENT_HANDLED;
 }
 
 static state_machine_result_t level1_state2_exit_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L1_S2: exit handler called\n");
   return EVENT_HANDLED;
 }
@@ -181,12 +185,14 @@ static state_machine_result_t level2_state1_handler(state_machine_t * const pSta
 
 static state_machine_result_t level2_state1_entry_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L2_S1: entry handler called\n");
   return EVENT_HANDLED;
 }
 
 static state_machine_result_t level2_state1_exit_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L2_S1: exit handler called\n");
   return EVENT_HANDLED;
 }
@@ -208,6 +214,7 @@ static state_machine_result_t level3_state1_handler(state_machine_t * const pSta
 
 static state_machine_result_t level3_state1_entry_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L3_S1: entry handler called\n");
 
   printf("\nState machine is in L3_S1 state\n");
@@ -221,6 +228,7 @@ static state_machine_result_t level3_state1_entry_handler(state_machine_t * cons
 
 static state_machine_result_t level3_state1_exit_handler(state_machine_t * const pState)
 {
+  (void)(pState);
   printf("L3_S1: exit handler called\n");
   return EVENT_HANDLED;
 }
