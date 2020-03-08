@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1583641026 source:c:\project\uml-state-machine-in-c\demo\hierarchical_state_machine\src\demo.c
+	<stdint.h>
+	<stdio.h>
+	<stdbool.h>
+	"hsm.h"
+	"demo.h"
+
+1577012586 c:\project\uml-state-machine-in-c\src\hsm.h
+	"hsm_config.h"
+
+1583079807 c:\project\uml-state-machine-in-c\demo\hierarchical_state_machine\src\demo.h
+
+1583079876 source:c:\project\uml-state-machine-in-c\demo\hierarchical_state_machine\src\main.c
+	<stdint.h>
+	<stdio.h>
+	<pthread.h>
+	<unistd.h>
+	<semaphore.h>
+	<stdbool.h>
+	"hsm.h"
+	"demo.h"
+
+1576508940 source:c:\project\uml-state-machine-in-c\src\hsm.c
+	<stdint.h>
+	<stdbool.h>
+	<stdio.h>
+	"hsm.h"
+
