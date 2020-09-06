@@ -9,15 +9,16 @@ This is a lightweight framework for UML state machine implemented in C. It suppo
 
 - The framework is very minimalistic. It has only 3 API's, 2 structures and 1 enumeration.
 - It uses only **116** bytes[1] of code memory for finite state machine and **424** bytes[1] of code memory for a hierarchical state machine. It doesn't use any data memory for the framework itself.
-> [1]Compiled in IAR ARM 8.30 compiler in release mode.
+
+ [1]: Compiled in IAR ARM 8.30 compiler in release mode.
 
 The framework contains three files
 1. hsm.c : Implementation of framework
 2. hsm.h : Contains the API's and structure declarations
 3. hsm_config.h : Compile-time configuration of framework.
 
-To read more about finite state machine and hierarchical state machine please go through the following links.
-<https://en.wikipedia.org/wiki/UML_state_machine>
+To read more about finite state machine and hierarchical state machine please go through the following links.  
+<https://en.wikipedia.org/wiki/UML_state_machine>  
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
 
