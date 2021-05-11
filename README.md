@@ -200,7 +200,7 @@ By default, logging is disabled.
 
 ### Disable Variable length array
 
-The `traverse_state` function uses variable length array feature in the implementaion of hierarchical state machine.
+The `traverse_state` function uses variable length array feature in the implementation of hierarchical state machine.
 If you want to disable variable length array used in the framework,
 either due to compiler doesn't support or some other reason,
 then `HSM_USE_VARIABLE_LENGTH_ARRAY` to 0.
@@ -212,7 +212,7 @@ By default, framework uses variable length array implementation.
 
 ```C
 // 0: disable variable length array used in hsm.c
-// 1: enable variable length aray used in hsm.c
+// 1: enable variable length array used in hsm.c
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 ```
 
