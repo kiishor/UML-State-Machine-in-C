@@ -1,3 +1,6 @@
+#ifndef HEADER_466F9D70903D09BA
+#define HEADER_466F9D70903D09BA
+
 /**
  * \file
  * \brief hierarchical state machine
@@ -24,12 +27,12 @@
  */
 
 #ifndef HIERARCHICAL_STATES
-//! Default configuration is hierarchical state machine
+/*! Default configuration is hierarchical state machine */
 #define  HIERARCHICAL_STATES    1
 #endif // HIERARCHICAL_STATES
 
 #ifndef STATE_MACHINE_LOGGER
-#define STATE_MACHINE_LOGGER     0        //!< Disable the logging of state machine
+#define STATE_MACHINE_LOGGER     0        /*!< Disable the logging of state machine */
 #endif // STATE_MACHINE_LOGGER
 
 #ifndef HSM_USE_VARIABLE_LENGTH_ARRAY
@@ -40,12 +43,12 @@
  *  --------------------- ENUMERATION ---------------------
  */
 
-//! List of state machine result code
+/*! List of state machine result code */
 typedef enum
 {
-  EVENT_HANDLED,      //!< Event handled successfully.
-  EVENT_UN_HANDLED,    //!< Event could not be handled.
-  //!< Handler handled the Event successfully and posted new event to itself.
+  EVENT_HANDLED,      /*!< Event handled successfully. */
+  EVENT_UN_HANDLED,    /*!< Event could not be handled. */
+  /*! Handler handled the Event successfully and posted new event to itself. */
   TRIGGERED_TO_SELF,
 }state_machine_result_t;
 
@@ -64,38 +67,38 @@ typedef state_machine_result_t (*state_handler) (state_machine_t* const State);
 typedef void (*state_machine_event_logger)(uint32_t state_machine, uint32_t state, uint32_t event);
 typedef void (*state_machine_result_logger)(uint32_t state, state_machine_result_t result);
 
-//! finite state structure
+/*! finite state structure */
 struct finite_state{
-  state_handler Handler;      //!< State handler function
-  state_handler Entry;        //!< Entry action for state
-  state_handler Exit;          //!< Exit action for state.
+  state_handler Handler;      /*!< State handler function */
+  state_handler Entry;        /*!< Entry action for state */
+  state_handler Exit;         /*!< Exit action for state. */
 
 #if STATE_MACHINE_LOGGER
-  uint32_t Id;              //!< unique identifier of state within the single state machine
+  uint32_t Id;              /*!< unique identifier of state within the single state machine */
 #endif
 };
 
-//! Hierarchical state structure
+/*! Hierarchical state structure */
 struct hierarchical_state
 {
-  state_handler Handler;      //!< State handler function
-  state_handler Entry;        //!< Entry action for state
-  state_handler Exit;          //!< Exit action for state.
+  state_handler Handler;      /*!< State handler function */
+  state_handler Entry;        /*!< Entry action for state */
+  state_handler Exit;         /*!< Exit action for state. */
 
 #if STATE_MACHINE_LOGGER
-  uint32_t Id;              //!< unique identifier of state within the single state machine
+  uint32_t Id;              /*!< unique identifier of state within the single state machine */
 #endif
 
-  const state_t* const Parent;    //!< Parent state of the current state.
-  const state_t* const Node;       //!< Child states of the current state.
-  uint32_t Level;            //!< Hierarchy level from the top state.
+  const state_t* const Parent;    /*!< Parent state of the current state. */
+  const state_t* const Node;      /*!< Child states of the current state. */
+  uint32_t Level;                 /*!< Hierarchy level from the top state. */
 };
 
-//! Abstract state machine structure
+/*! Abstract state machine structure */
 struct state_machine_t
 {
-   uint32_t Event;          //!< Pending Event for state machine
-   const state_t* State;    //!< State of state machine.
+   uint32_t Event;          /*!< Pending Event for state machine */
+   const state_t* State;    /*!< State of state machine. */
 };
 
 /*
@@ -127,3 +130,5 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
 #endif // __cplusplus
 
 #endif // HSM_H
+#endif // header guard
+
