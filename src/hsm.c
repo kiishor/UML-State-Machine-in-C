@@ -30,7 +30,7 @@
 do{                                                             \
   if(handler != NULL)                                           \
   {                                                             \
-    state_machine_result_t result = handler(state_machine);     \
+    result = handler(state_machine);     \
     switch(result)                                              \
     {                                                           \
     case TRIGGERED_TO_SELF:                                     \
@@ -147,6 +147,7 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
   const state_t* const pSource_State = pState_Machine->State;
   bool triggered_to_self = false;
   pState_Machine->State = pTarget_State;    /* Save the target node */
+  state_machine_result_t result;
 
   /* Call Exit function before leaving the Source state. */
     EXECUTE_HANDLER(pSource_State->Exit, triggered_to_self, pState_Machine);
@@ -160,7 +161,7 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
 
   return EVENT_HANDLED;
 }
-
+#define HIERARCHICAL_STATES 1
 #if HIERARCHICAL_STATES
 /** \brief Traverse to target state. It calls exit functions before leaving
       the source state & calls entry function before entering the target state.
@@ -176,6 +177,8 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
   const state_t *pSource_State = pState_Machine->State;
   bool triggered_to_self = false;
   pState_Machine->State = pTarget_State;    /* Save the target node */
+  uint32_t index = 0;
+  state_machine_result_t result;
 
 #if (HSM_USE_VARIABLE_LENGTH_ARRAY == 1)
   const state_t *pTarget_Path[pTarget_State->Level];  /* Array to store the target node path */
@@ -189,7 +192,6 @@ state_machine_result_t traverse_state(state_machine_t* const pState_Machine,
   const state_t* pTarget_Path[MAX_HIERARCHICAL_LEVEL];     /* Array to store the target node path */
 #endif
 
-  uint32_t index = 0;
 
   /* make the source state & target state at the same hierarchy level. */
 
