@@ -1,0 +1,10 @@
+..\..\src\demo.c
+..\..\src\demo.h
+..\..\src\main.c
+..\..\..\..\src\hsm.c
+..\..\..\..\src\hsm.h
+stm8_interrupt_vector.c
+..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\mods0.h
+..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h
+..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h
+..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h

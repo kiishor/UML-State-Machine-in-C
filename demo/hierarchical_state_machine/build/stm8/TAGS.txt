@@ -1,0 +1,184 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUFSIZ	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	26;"	macro
+DEMO_H	..\..\src\demo.h	2;"	macro
+DemoStateMachine	..\..\src\main.c	34;"	variable
+Dummy1	..\..\src\demo.h	38;"	member	struct:__anon2
+Dummy2	..\..\src\demo.h	39;"	member	struct:__anon2
+EOF	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	27;"	macro
+EVENT1	..\..\src\demo.h	25;"	enumerator	enum:__anon1
+EVENT2	..\..\src\demo.h	26;"	enumerator	enum:__anon1
+EVENT3	..\..\src\demo.h	27;"	enumerator	enum:__anon1
+EVENT_HANDLED	..\..\..\..\src\hsm.h	49;"	enumerator	enum:__anon3
+EVENT_UN_HANDLED	..\..\..\..\src\hsm.h	50;"	enumerator	enum:__anon3
+EXECUTE_HANDLER	..\..\..\..\src\hsm.c	29;"	macro	file:
+Entry	..\..\..\..\src\hsm.h	73;"	member	struct:finite_state
+Entry	..\..\..\..\src\hsm.h	85;"	member	struct:hierarchical_state
+Event	..\..\..\..\src\hsm.h	100;"	member	struct:state_machine_t
+Exit	..\..\..\..\src\hsm.h	74;"	member	struct:finite_state
+Exit	..\..\..\..\src\hsm.h	86;"	member	struct:hierarchical_state
+HEADER_466F9D70903D09BA	..\..\..\..\src\hsm.h	2;"	macro
+HIERARCHICAL_STATES	..\..\..\..\src\hsm.c	164;"	macro	file:
+HIERARCHICAL_STATES	..\..\..\..\src\hsm.h	31;"	macro
+HSM_H	..\..\..\..\src\hsm.h	19;"	macro
+HSM_USE_VARIABLE_LENGTH_ARRAY	..\..\..\..\src\hsm.h	39;"	macro
+Handler	..\..\..\..\src\hsm.h	72;"	member	struct:finite_state
+Handler	..\..\..\..\src\hsm.h	84;"	member	struct:hierarchical_state
+INT16_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	97;"	macro
+INT16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	50;"	macro
+INT16_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	47;"	macro
+INT32_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	98;"	macro
+INT32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	51;"	macro
+INT32_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	48;"	macro
+INT8_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	96;"	macro
+INT8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	49;"	macro
+INT8_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	46;"	macro
+INTMAX_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	104;"	macro
+INTMAX_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	91;"	macro
+INTMAX_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	90;"	macro
+INTPTR_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	83;"	macro
+INTPTR_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	82;"	macro
+INT_FAST16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	74;"	macro
+INT_FAST16_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	71;"	macro
+INT_FAST32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	75;"	macro
+INT_FAST32_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	72;"	macro
+INT_FAST8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	73;"	macro
+INT_FAST8_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	70;"	macro
+INT_LEAST16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	62;"	macro
+INT_LEAST16_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	59;"	macro
+INT_LEAST32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	63;"	macro
+INT_LEAST32_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	60;"	macro
+INT_LEAST8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	61;"	macro
+INT_LEAST8_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	58;"	macro
+Id	..\..\..\..\src\hsm.h	77;"	member	struct:finite_state
+Id	..\..\..\..\src\hsm.h	89;"	member	struct:hierarchical_state
+Level	..\..\..\..\src\hsm.h	94;"	member	struct:hierarchical_state
+Level1_HSM	..\..\src\demo.c	53;"	variable	file:
+Level2_HSM	..\..\src\demo.c	49;"	variable	file:
+Level2_HSM	..\..\src\demo.c	74;"	variable	file:
+Level3_HSM	..\..\src\demo.c	50;"	variable	file:
+Level3_HSM	..\..\src\demo.c	87;"	variable	file:
+Machine	..\..\src\demo.h	37;"	member	struct:__anon2
+NULL	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	30;"	macro
+Node	..\..\..\..\src\hsm.h	93;"	member	struct:hierarchical_state
+NonHandledInterrupt	stm8_interrupt_vector.c	12;"	function	signature:(void)
+PTRDIFF_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	86;"	macro
+PTRDIFF_MIN	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	85;"	macro
+Parent	..\..\..\..\src\hsm.h	92;"	member	struct:hierarchical_state
+STATE_MACHINE_LOGGER	..\..\..\..\src\hsm.h	35;"	macro
+Semaphore	..\..\src\main.c	40;"	variable
+State	..\..\..\..\src\hsm.h	101;"	member	struct:state_machine_t
+State_Machines	..\..\src\main.c	37;"	variable
+TRIGGERED_TO_SELF	..\..\..\..\src\hsm.h	52;"	enumerator	enum:__anon3
+UINT16_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	101;"	macro
+UINT16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	53;"	macro
+UINT32_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	102;"	macro
+UINT32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	54;"	macro
+UINT8_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	100;"	macro
+UINT8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	52;"	macro
+UINTMAX_C	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	105;"	macro
+UINTMAX_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	92;"	macro
+UINTPTR_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	84;"	macro
+UINT_FAST16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	77;"	macro
+UINT_FAST32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	78;"	macro
+UINT_FAST8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	76;"	macro
+UINT_LEAST16_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	65;"	macro
+UINT_LEAST32_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	66;"	macro
+UINT_LEAST8_MAX	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	64;"	macro
+__MODS0__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\mods0.h	11;"	macro
+__SIZE_T__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	9;"	macro
+__STDBOOL	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h	5;"	macro
+__STDINT__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	5;"	macro
+__STDIO__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	6;"	macro
+__bool_true_false_are_defined	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h	11;"	macro
+_stext	stm8_interrupt_vector.c	20;"	prototype	file:
+_vectab	stm8_interrupt_vector.c	22;"	variable
+bool	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h	7;"	macro
+console	..\..\src\main.c	52;"	function	signature:(void* vargp)
+demo_event_t	..\..\src\demo.h	28;"	typedef	typeref:enum:__anon1
+demo_state_machine_t	..\..\src\demo.h	40;"	typedef	typeref:struct:__anon2
+dispatch_event	..\..\..\..\src\hsm.c	58;"	function	signature:(state_machine_t* const pState_Machine[] ,uint32_t quantity ,state_machine_event_logger event_logger ,state_machine_result_logger result_logger )
+dispatch_event	..\..\..\..\src\hsm.h	112;"	prototype	signature:(state_machine_t* const pState_Machine[], uint32_t quantity ,state_machine_event_logger event_logger ,state_machine_result_logger result_logger )
+false	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h	10;"	macro
+finite_state	..\..\..\..\src\hsm.h	71;"	struct
+getchar	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	15;"	prototype	signature:(void)
+gets	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	16;"	prototype	signature:(char *s)
+hierarchical_state	..\..\..\..\src\hsm.h	82;"	struct
+init_demo	..\..\src\demo.c	103;"	function	signature:(demo_state_machine_t* const pDemo)
+init_demo	..\..\src\demo.h	46;"	prototype	signature:(demo_state_machine_t* const pDemo)
+int16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	10;"	typedef
+int32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	11;"	typedef
+int8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	9;"	typedef
+int_fast16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	28;"	typedef
+int_fast32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	29;"	typedef
+int_fast8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	27;"	typedef
+int_least16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	19;"	typedef
+int_least32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	20;"	typedef
+int_least8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	18;"	typedef
+interrupt_handler	stm8_interrupt_vector.c	9;"	member	struct:interrupt_vector	file:
+interrupt_handler_t	stm8_interrupt_vector.c	5;"	typedef	file:
+interrupt_instruction	stm8_interrupt_vector.c	8;"	member	struct:interrupt_vector	file:
+interrupt_vector	stm8_interrupt_vector.c	7;"	struct	file:
+intmax_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	41;"	typedef
+intptr_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	36;"	typedef
+level1_state1_entry_handler	..\..\src\demo.c	126;"	function	file:	signature:(state_machine_t * const pState)
+level1_state1_entry_handler	..\..\src\demo.c	30;"	prototype	file:	signature:(state_machine_t * const)
+level1_state1_exit_handler	..\..\src\demo.c	136;"	function	file:	signature:(state_machine_t * const pState)
+level1_state1_exit_handler	..\..\src\demo.c	31;"	prototype	file:	signature:(state_machine_t * const)
+level1_state1_handler	..\..\src\demo.c	112;"	function	file:	signature:(state_machine_t * const pState)
+level1_state1_handler	..\..\src\demo.c	29;"	prototype	file:	signature:(state_machine_t * const)
+level1_state2_entry_handler	..\..\src\demo.c	157;"	function	file:	signature:(state_machine_t * const pState)
+level1_state2_entry_handler	..\..\src\demo.c	34;"	prototype	file:	signature:(state_machine_t * const)
+level1_state2_exit_handler	..\..\src\demo.c	164;"	function	file:	signature:(state_machine_t * const pState)
+level1_state2_exit_handler	..\..\src\demo.c	35;"	prototype	file:	signature:(state_machine_t * const)
+level1_state2_handler	..\..\src\demo.c	143;"	function	file:	signature:(state_machine_t * const pState)
+level1_state2_handler	..\..\src\demo.c	33;"	prototype	file:	signature:(state_machine_t * const)
+level2_state1_entry_handler	..\..\src\demo.c	186;"	function	file:	signature:(state_machine_t * const pState)
+level2_state1_entry_handler	..\..\src\demo.c	38;"	prototype	file:	signature:(state_machine_t * const)
+level2_state1_exit_handler	..\..\src\demo.c	193;"	function	file:	signature:(state_machine_t * const pState)
+level2_state1_exit_handler	..\..\src\demo.c	39;"	prototype	file:	signature:(state_machine_t * const)
+level2_state1_handler	..\..\src\demo.c	171;"	function	file:	signature:(state_machine_t * const pState)
+level2_state1_handler	..\..\src\demo.c	37;"	prototype	file:	signature:(state_machine_t * const)
+level3_state1_entry_handler	..\..\src\demo.c	215;"	function	file:	signature:(state_machine_t * const pState)
+level3_state1_entry_handler	..\..\src\demo.c	42;"	prototype	file:	signature:(state_machine_t * const)
+level3_state1_exit_handler	..\..\src\demo.c	229;"	function	file:	signature:(state_machine_t * const pState)
+level3_state1_exit_handler	..\..\src\demo.c	43;"	prototype	file:	signature:(state_machine_t * const)
+level3_state1_handler	..\..\src\demo.c	200;"	function	file:	signature:(state_machine_t * const pState)
+level3_state1_handler	..\..\src\demo.c	41;"	prototype	file:	signature:(state_machine_t * const)
+main	..\..\src\main.c	71;"	function	signature:(void)
+parse_cli	..\..\src\demo.h	59;"	function	signature:(demo_state_machine_t* const pDemo, char input)
+printf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	17;"	prototype	signature:(char *format, ...)
+putchar	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	18;"	prototype	signature:(char c)
+puts	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	19;"	prototype	signature:(char *s)
+scanf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	20;"	prototype	signature:(char *format, ...)
+size_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	10;"	typedef
+sprintf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	22;"	prototype	signature:(char *s, char *format, ...)
+sscanf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	21;"	prototype	signature:(char *s, char *format, ...)
+state_handler	..\..\..\..\src\hsm.h	66;"	typedef
+state_machine_event_logger	..\..\..\..\src\hsm.h	67;"	typedef
+state_machine_result_logger	..\..\..\..\src\hsm.h	68;"	typedef
+state_machine_result_t	..\..\..\..\src\hsm.h	53;"	typedef	typeref:enum:__anon3
+state_machine_t	..\..\..\..\src\hsm.h	65;"	typedef	typeref:struct:state_machine_t
+state_machine_t	..\..\..\..\src\hsm.h	98;"	struct
+state_t	..\..\..\..\src\hsm.h	60;"	typedef	typeref:struct:hierarchical_state
+state_t	..\..\..\..\src\hsm.h	62;"	typedef	typeref:struct:finite_state
+switch_state	..\..\..\..\src\hsm.c	144;"	function	signature:(state_machine_t* const pState_Machine, const state_t* const pTarget_State)
+switch_state	..\..\..\..\src\hsm.h	125;"	prototype	signature:(state_machine_t* const pState_Machine, const state_t* const pTarget_State)
+traverse_state	..\..\..\..\src\hsm.c	174;"	function	signature:(state_machine_t* const pState_Machine, const state_t* pTarget_State)
+traverse_state	..\..\..\..\src\hsm.h	121;"	prototype	signature:(state_machine_t* const pState_Machine, const state_t* pTarget_State)
+true	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdbool.h	9;"	macro
+uint16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	13;"	typedef
+uint32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	14;"	typedef
+uint8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	12;"	typedef
+uint_fast16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	31;"	typedef
+uint_fast32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	32;"	typedef
+uint_fast8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	30;"	typedef
+uint_least16_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	22;"	typedef
+uint_least32_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	23;"	typedef
+uint_least8_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	21;"	typedef
+uintmax_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	42;"	typedef
+uintptr_t	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	37;"	typedef
