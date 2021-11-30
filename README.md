@@ -21,6 +21,8 @@ To read more about finite state machine and hierarchical state machine please go
 <https://en.wikipedia.org/wiki/UML_state_machine>  
 <https://en.wikipedia.org/wiki/Finite-state_machine>
 
+Moroever, there is a an excellent book [Practical UML Statecharts in C/C++, 2nd Ed][1] that explains the UML state machine concept.
+This framework is heavily inspired from this book.
 
 State Machine
 -------------
@@ -258,3 +260,4 @@ Start timer on `state_machine_event_logger` and stop on `state_machine_result_lo
 - for discussion, questions or feedback use
    https://groups.google.com/forum/#!forum/minimalist-uml-state-machine-in-c
 
+[1]: https://www.state-machine.com/psicc2
