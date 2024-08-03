@@ -89,14 +89,24 @@ state_machine_result_t dispatch_event(state_machine_t* const pState_Machine[]
       switch(result)
       {
       case EVENT_HANDLED:
-        // Clear event, if successfully handled by state handler.
-        pState_Machine[index]->Event = 0;
+#if EVENT_Q
+        // Does state machine implements event queue?
+        if(pState_Machine[index].get_pending_event)
+        {
+          pState_Machine[index]->Event = pState_Machine[index].get_pending_event();
+        }
+        else
+#else
+        {
+          // Clear event, if successfully handled by state handler.
+          pState_Machine[index]->Event = 0;
+        }
+#endif  // EVENT_Q
 
-        // intentional fall through
-
+        // Intentional fall through
+      case TRIGGERED_TO_SELF:
         // State handler handled the previous event successfully,
         // and posted a new event to itself.
-      case TRIGGERED_TO_SELF:
 
         index = 0;  // Restart the event dispatcher from the first state machine.
         break;

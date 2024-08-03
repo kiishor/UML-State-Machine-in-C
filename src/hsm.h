@@ -1,3 +1,6 @@
+#ifndef HEADER_466F9D70903D09BA
+#define HEADER_466F9D70903D09BA
+
 /**
  * \file
  * \brief hierarchical state machine
@@ -36,6 +39,10 @@
 #define HSM_USE_VARIABLE_LENGTH_ARRAY 1
 #endif
 
+#ifndef EVENT_Q
+#define EVENT_Q 0                         //!< Enables event queues for state machine.
+#endif
+
 /*
  *  --------------------- ENUMERATION ---------------------
  */
@@ -58,6 +65,10 @@ typedef struct hierarchical_state state_t;
 #else
 typedef struct finite_state state_t;
 #endif // HIERARCHICAL_STATES
+
+#if EVENT_Q
+typedef uint32_t (*get_pending_event)(void);
+#endif // EVENT_Q
 
 typedef struct state_machine_t state_machine_t;
 typedef state_machine_result_t (*state_handler) (state_machine_t* const State);
@@ -96,6 +107,10 @@ struct state_machine_t
 {
    uint32_t Event;          //!< Pending Event for state machine
    const state_t* State;    //!< State of state machine.
+
+#if EVENT_Q
+  get_pending_event get_pending_event;  //!< Function to fetch event from queue.
+#endif // EVENT_Q
 };
 
 /*
@@ -127,3 +142,5 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
 #endif // __cplusplus
 
 #endif // HSM_H
+#endif // header guard
+
