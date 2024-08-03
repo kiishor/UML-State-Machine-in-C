@@ -1,5 +1,5 @@
-#ifndef HEADER_466F9D70903D09BA
-#define HEADER_466F9D70903D09BA
+#ifndef HSM_H
+#define HSM_H
 
 /**
  * \file
@@ -14,9 +14,6 @@
  *  Distributed under the MIT License, (See accompanying
  *  file LICENSE or copy at https://mit-license.org/)
  */
-
-#ifndef HSM_H
-#define HSM_H
 
 #ifdef HSM_CONFIG
 #include "hsm_config.h"
@@ -142,5 +139,4 @@ extern state_machine_result_t switch_state(state_machine_t* const pState_Machine
 #endif // __cplusplus
 
 #endif // HSM_H
-#endif // header guard
 
